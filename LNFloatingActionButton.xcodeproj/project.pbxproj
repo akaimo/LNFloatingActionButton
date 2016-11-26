@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		A249B3FE1DE949F900CC0B97 /* LNFloatingActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A249B4291DE95F5C00CC0B97 /* LNFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A249B3F91DE949F900CC0B97 /* LNFloatingActionButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LNFloatingActionButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNFloatingActionButton.h; sourceTree = "<group>"; };
 		A249B3FD1DE949F900CC0B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNFloatingActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */,
+				A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */,
 				A249B3FD1DE949F900CC0B97 /* Info.plist */,
 			);
 			path = LNFloatingActionButton;
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					A249B3F81DE949F900CC0B97 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A249B4291DE95F5C00CC0B97 /* LNFloatingActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +244,7 @@
 		A249B4021DE949F900CC0B97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -250,6 +256,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SK.LNFloatingActionButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -257,6 +264,7 @@
 		A249B4031DE949F900CC0B97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -291,6 +299,7 @@
 				A249B4031DE949F900CC0B97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
