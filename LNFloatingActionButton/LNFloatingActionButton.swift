@@ -11,11 +11,16 @@ import QuartzCore
 
 open class LNFloatingActionButton: UIView {
     open let imageView = UIImageView()
-    
     open var internalRatio: CGFloat = 0.75
+    
     open override var frame: CGRect {
         didSet {
             resizeSubviews()
+        }
+    }
+    open var color = UIColor(red: 0/255.0, green: 157/255.0, blue: 238/255.0, alpha: 1.0) {
+        didSet {
+            backgroundColor = color
         }
     }
     
@@ -39,7 +44,7 @@ open class LNFloatingActionButton: UIView {
     
     // MARK: - Private
     private func setup() {
-        backgroundColor = UIColor.blue
+        backgroundColor = color
         clipsToBounds = false
         layer.cornerRadius = frame.width / 2
         imageView.clipsToBounds = false
