@@ -65,7 +65,7 @@ open class LNFloatingActionButton: UIView {
     }
     
     open func btnOpenAnimation() {
-        UIView.animate(withDuration: 0.5) { () -> Void in
+        UIView.animate(withDuration: 0.3) { () -> Void in
             self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
         }
     }
@@ -76,16 +76,36 @@ open class LNFloatingActionButton: UIView {
         cells().forEach { cell in
             cellHeight += cell.size + cellMargin
             cell.frame.origin.y = -cellHeight
+            cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
             UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.3,
                            options: UIViewAnimationOptions(),
                            animations: { _ in
+                            cell.layer.transform = CATransform3DIdentity
                             cell.alpha = 1
             }, completion: nil)
             delay += 0.1
         }
     }
     
+    open func btnCloseAnimation() {
+        UIView.animate(withDuration: 0.3) { () -> Void in
+            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 0 / 180.0)
+        }
+    }
+    
+    open func cellCloseAnimation() {
+        var delay = 0.0
+        cells().forEach { cell in
+            UIView.animate(withDuration: 0.15, delay: delay, options: UIViewAnimationOptions(), animations: { _ in
+                cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
+                cell.alpha = 0
+            }, completion: nil)
+            delay += 0.1
+        }
+    }
+    
     open func open() {
+        // TODO: remove cell
         btnOpenAnimation()
         cells().forEach { insert(cell: $0) }
         cellOpenAnimation()
@@ -93,9 +113,8 @@ open class LNFloatingActionButton: UIView {
     }
     
     open func close() {
-        print("close")
-        // btn animation
-        // close animation -> delete cell
+        btnCloseAnimation()
+        cellCloseAnimation()
         isClosed = true
     }
     
