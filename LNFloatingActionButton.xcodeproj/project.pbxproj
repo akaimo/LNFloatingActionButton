@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A249B3FE1DE949F900CC0B97 /* LNFloatingActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A249B4291DE95F5C00CC0B97 /* LNFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */; };
+		A249B42B1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A249B42A1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,7 @@
 		A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNFloatingActionButton.h; sourceTree = "<group>"; };
 		A249B3FD1DE949F900CC0B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNFloatingActionButton.swift; sourceTree = "<group>"; };
+		A249B42A1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNFloatingActionButtonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			children = (
 				A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */,
 				A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */,
+				A249B42A1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift */,
 				A249B3FD1DE949F900CC0B97 /* Info.plist */,
 			);
 			path = LNFloatingActionButton;
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A249B42B1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift in Sources */,
 				A249B4291DE95F5C00CC0B97 /* LNFloatingActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

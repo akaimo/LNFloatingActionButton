@@ -12,8 +12,23 @@
 		A249B4161DE94AF100CC0B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A249B4141DE94AF100CC0B97 /* Main.storyboard */; };
 		A249B4181DE94AF100CC0B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A249B4171DE94AF100CC0B97 /* Assets.xcassets */; };
 		A249B41B1DE94AF100CC0B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A249B4191DE94AF100CC0B97 /* LaunchScreen.storyboard */; };
-		A249B4271DE94E4400CC0B97 /* LNFloatingActionButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A249B4261DE94E4400CC0B97 /* LNFloatingActionButton.framework */; };
+		A249B4311DE9AB7800CC0B97 /* LNFloatingActionButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A249B4301DE9AB7800CC0B97 /* LNFloatingActionButton.framework */; };
+		A249B4321DE9AB7800CC0B97 /* LNFloatingActionButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A249B4301DE9AB7800CC0B97 /* LNFloatingActionButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A249B4331DE9AB7800CC0B97 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A249B4321DE9AB7800CC0B97 /* LNFloatingActionButton.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A249B40D1DE94AF100CC0B97 /* LNFloatingActionButton-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LNFloatingActionButton-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,7 +38,7 @@
 		A249B4171DE94AF100CC0B97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A249B41A1DE94AF100CC0B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A249B41C1DE94AF100CC0B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A249B4261DE94E4400CC0B97 /* LNFloatingActionButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LNFloatingActionButton.framework; path = "../build/Debug-iphoneos/LNFloatingActionButton.framework"; sourceTree = "<group>"; };
+		A249B4301DE9AB7800CC0B97 /* LNFloatingActionButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LNFloatingActionButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A249B4271DE94E4400CC0B97 /* LNFloatingActionButton.framework in Frameworks */,
+				A249B4311DE9AB7800CC0B97 /* LNFloatingActionButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +86,7 @@
 		A249B4251DE94E4300CC0B97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A249B4261DE94E4400CC0B97 /* LNFloatingActionButton.framework */,
+				A249B4301DE9AB7800CC0B97 /* LNFloatingActionButton.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,6 +101,7 @@
 				A249B4091DE94AF100CC0B97 /* Sources */,
 				A249B40A1DE94AF100CC0B97 /* Frameworks */,
 				A249B40B1DE94AF100CC0B97 /* Resources */,
+				A249B4331DE9AB7800CC0B97 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
