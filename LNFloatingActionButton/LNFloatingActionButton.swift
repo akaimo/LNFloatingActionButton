@@ -22,8 +22,8 @@ import QuartzCore
 
 open class LNFloatingActionButton: UIView {
     open let imageView = UIImageView()
-    open var internalRatio: CGFloat = 0.75
     
+    open var internalRatio: CGFloat = 0.75
     open override var frame: CGRect {
         didSet {
             resizeSubviews()
@@ -56,10 +56,15 @@ open class LNFloatingActionButton: UIView {
     
     
     // MARK: - Open
+    open func btnOpenAnimation() {
+        UIView.animate(withDuration: 0.5) { () -> Void in
+            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
+        }
+    }
+    
     open func open() {
         print("open")
-        // btn animation
-        // insert cell
+        btnOpenAnimation()
         cells().forEach { insert(cell: $0) }
         // open animation
         isClosed = false
