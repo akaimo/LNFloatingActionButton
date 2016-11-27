@@ -138,6 +138,7 @@ open class LNFloatingActionButton: UIView {
     
     private func responseCircle() {
         if touching && responsible {
+            // TODO: Customize
             circleLayer.backgroundColor = UIColor.blue.cgColor
         } else {
             circleLayer.backgroundColor = color.cgColor
@@ -175,6 +176,13 @@ open class LNFloatingActionButton: UIView {
         isClosed ? open() : close()
     }
     
+    func didTap(cell: LNFloatingActionButtonCell) {
+        guard let _ = dataSource else { return }
+        cells().enumerated()
+            .filter { $1 === cell }
+            .forEach { index, _ in delegate?.floatingActionButton?(self, didSelectItemAtIndex: index) }
+    }
+    
     
     // MARK: - Event
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -194,6 +202,16 @@ open class LNFloatingActionButton: UIView {
     }
     
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        for cell in cells() {
+            let pointForTargetView = cell.convert(point, from: self)
+            
+            if (cell.bounds.contains(pointForTargetView)) {
+                if cell.isUserInteractionEnabled {
+                    return cell.hitTest(pointForTargetView, with: event)
+                }
+            }
+        }
+        
         return super.hitTest(point, with: event)
     }
 }

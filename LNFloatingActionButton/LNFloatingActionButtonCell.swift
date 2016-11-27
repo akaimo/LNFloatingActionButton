@@ -12,6 +12,7 @@ open class LNFloatingActionButtonCell: UIView {
     weak var actionButton: LNFloatingActionButton?
     open let imageView = UIImageView()
     open var internalRatio: CGFloat = 0.75
+    open var responsible = true
     
     open var size: CGFloat = 42 {
         didSet {
@@ -55,17 +56,25 @@ open class LNFloatingActionButtonCell: UIView {
     }
     
     
-    // MARK: - Action
-    private func didTap() {}
-    
-    
     // MARK: - Event
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {}
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {}
-    open override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {}
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if responsible {
+            // TODO: Customize
+            backgroundColor = UIColor.blue
+        }
+    }
     
-    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        return super.hitTest(point, with: event)
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if responsible {
+            backgroundColor = color
+        }
+        actionButton?.didTap(cell: self)
+    }
+    
+    open override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+        if responsible {
+            backgroundColor = color
+        }
     }
     
 }
