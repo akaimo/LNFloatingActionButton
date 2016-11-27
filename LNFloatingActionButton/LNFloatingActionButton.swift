@@ -22,8 +22,12 @@ import QuartzCore
 
 open class LNFloatingActionButton: UIView {
     open let imageView = UIImageView()
+    private var circleLayer: CAShapeLayer = CAShapeLayer()
     
     open var internalRatio: CGFloat = 0.75
+    open var cellMargin: CGFloat = 10.0
+    open var btnToCellMargin: CGFloat = 15.0
+    
     open override var frame: CGRect {
         didSet {
             resizeSubviews()
@@ -31,7 +35,7 @@ open class LNFloatingActionButton: UIView {
     }
     open var color = UIColor(red: 0/255.0, green: 157/255.0, blue: 238/255.0, alpha: 1.0) {
         didSet {
-            backgroundColor = color
+            circleLayer.backgroundColor = color.cgColor
         }
     }
     open var responsible = true
@@ -56,17 +60,35 @@ open class LNFloatingActionButton: UIView {
     
     
     // MARK: - Open
+    open override func draw(_ rect: CGRect) {
+        responseCircle()
+    }
+    
     open func btnOpenAnimation() {
         UIView.animate(withDuration: 0.5) { () -> Void in
             self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
         }
     }
     
+    open func cellOpenAnimation() {
+        var cellHeight = btnToCellMargin
+        var delay = 0.0
+        cells().forEach { cell in
+            cellHeight += cell.size + cellMargin
+            cell.frame.origin.y = -cellHeight
+            UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.3,
+                           options: UIViewAnimationOptions(),
+                           animations: { _ in
+                            cell.alpha = 1
+            }, completion: nil)
+            delay += 0.1
+        }
+    }
+    
     open func open() {
-        print("open")
         btnOpenAnimation()
         cells().forEach { insert(cell: $0) }
-        // open animation
+        cellOpenAnimation()
         isClosed = false
     }
     
@@ -77,15 +99,13 @@ open class LNFloatingActionButton: UIView {
         isClosed = true
     }
     
-    open override func draw(_ rect: CGRect) {
-        drawCircle()
-    }
-    
     
     // MARK: - Private
     private func setup() {
-        self.backgroundColor = color
+        self.backgroundColor = UIColor.clear
         self.clipsToBounds = false
+        setupCircleLayer()
+        
         imageView.clipsToBounds = false
         self.addSubview(imageView)
         resizeSubviews()
@@ -97,14 +117,20 @@ open class LNFloatingActionButton: UIView {
                                  width: size.width, height: size.height)
     }
     
-    private func drawCircle() {
-        self.layer.cornerRadius = frame.width / 2
-        self.layer.masksToBounds = true
+    private func responseCircle() {
         if touching && responsible {
-//            self.layer.backgroundColor = self.color.white(0.5).cgColor
+            circleLayer.backgroundColor = UIColor.blue.cgColor
         } else {
-            self.layer.backgroundColor = self.color.cgColor
+            circleLayer.backgroundColor = color.cgColor
         }
+    }
+    
+    private func setupCircleLayer() {
+        circleLayer.removeFromSuperlayer()
+        circleLayer.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+        circleLayer.backgroundColor = color.cgColor
+        circleLayer.cornerRadius = self.frame.size.width/2  // FIXME: when width != height
+        layer.addSublayer(circleLayer)
     }
     
     private func cells() -> [LNFloatingActionButtonCell] {
