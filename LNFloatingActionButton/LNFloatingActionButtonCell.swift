@@ -10,8 +10,8 @@ import UIKit
 
 open class LNFloatingActionButtonCell: UIView {
     weak var actionButton: LNFloatingActionButton?
-    open let imageView = UIImageView()
-    open var titleLabel = UILabel()
+    private let imageView = UIImageView()
+    private let titleLabel = UILabel()  // TODO: set padding
     
     open var internalRatio: CGFloat = 0.75
     open var responsible = true
@@ -19,8 +19,17 @@ open class LNFloatingActionButtonCell: UIView {
     open var size: CGFloat = 42 {
         didSet {
             self.center = CGPoint(x: size/2, y: size/2)
-            titleLabel.frame.origin.y = self.frame.height/2 - titleLabel.frame.size.height/2
+            setTitleLabelPosition()
             resizeSubviews()
+        }
+    }
+    open var titleLabelSize: CGSize? = nil {
+        didSet {
+            guard let size = titleLabelSize else { return }
+            titleLabel.frame.size = size
+            titleLabel.textAlignment = .right  // TODO: left, center
+            titleLabel.baselineAdjustment = .alignCenters
+            setTitleLabelPosition()
         }
     }
     open var color = UIColor(red: 0/255.0, green: 157/255.0, blue: 238/255.0, alpha: 1.0) {
@@ -28,12 +37,21 @@ open class LNFloatingActionButtonCell: UIView {
             self.backgroundColor = color
         }
     }
+    open var titleColor = UIColor.black {
+        didSet {
+            titleLabel.textColor = titleColor
+        }
+    }
+    open var titleLabelBackgroundColor = UIColor.clear {
+        didSet {
+            titleLabel.backgroundColor = titleLabelBackgroundColor
+        }
+    }
     open var title: String? = nil {
         didSet {
             titleLabel.text = title
             titleLabel.sizeToFit()
-            titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
-            titleLabel.frame.origin.y = self.size/2 - titleLabel.frame.size.height/2
+            setTitleLabelPosition()
         }
     }
     
@@ -57,14 +75,19 @@ open class LNFloatingActionButtonCell: UIView {
         self.layer.cornerRadius = frame.width / 2
         imageView.clipsToBounds = false
         self.addSubview(imageView)
+        resizeSubviews()
         self.addSubview(titleLabel)
-//        resizeSubviews()
     }
     
     private func resizeSubviews() {
         let size = CGSize(width: frame.width * 0.5, height: frame.height * 0.5)
         imageView.frame = CGRect(x: frame.width - frame.width * internalRatio, y: frame.height - frame.height * internalRatio,
                                  width: size.width, height: size.height)
+    }
+    
+    private func setTitleLabelPosition() {
+        titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
+        titleLabel.frame.origin.y = self.frame.height/2 - titleLabel.frame.size.height/2
     }
     
     
