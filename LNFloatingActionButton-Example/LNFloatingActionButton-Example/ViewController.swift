@@ -18,8 +18,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let cell = LNFloatingActionButtonCell()
+        cell.title = "sample"
+        
         cells.append(LNFloatingActionButtonCell())
-        cells.append(LNFloatingActionButtonCell())
+        cells.append(cell)
         
         floatingActionButton = LNFloatingActionButton(frame: CGRect(x: view.frame.size.width - 100, y: view.frame.size.height - 100, width: 50, height: 50))
         floatingActionButton.delegate = self

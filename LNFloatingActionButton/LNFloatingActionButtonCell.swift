@@ -11,18 +11,29 @@ import UIKit
 open class LNFloatingActionButtonCell: UIView {
     weak var actionButton: LNFloatingActionButton?
     open let imageView = UIImageView()
+    open var titleLabel = UILabel()
+    
     open var internalRatio: CGFloat = 0.75
     open var responsible = true
     
     open var size: CGFloat = 42 {
         didSet {
             self.center = CGPoint(x: size/2, y: size/2)
+            titleLabel.frame.origin.y = self.frame.height/2 - titleLabel.frame.size.height/2
             resizeSubviews()
         }
     }
     open var color = UIColor(red: 0/255.0, green: 157/255.0, blue: 238/255.0, alpha: 1.0) {
         didSet {
             self.backgroundColor = color
+        }
+    }
+    open var title: String? = nil {
+        didSet {
+            titleLabel.text = title
+            titleLabel.sizeToFit()
+            titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
+            titleLabel.frame.origin.y = self.size/2 - titleLabel.frame.size.height/2
         }
     }
     
@@ -46,6 +57,7 @@ open class LNFloatingActionButtonCell: UIView {
         self.layer.cornerRadius = frame.width / 2
         imageView.clipsToBounds = false
         self.addSubview(imageView)
+        self.addSubview(titleLabel)
 //        resizeSubviews()
     }
     
