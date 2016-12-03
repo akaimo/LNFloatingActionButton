@@ -48,6 +48,8 @@ open class LNFloatingActionButton: UIView {
     
     private var touching = false
     
+    open var cellOpenAnimation: (LNFloatingActionButton) -> () = { btn in btn.popCellAnimationWithOpen() }
+    
     
     // MARK: - init
     public init(x: CGFloat, y: CGFloat) {
@@ -61,31 +63,24 @@ open class LNFloatingActionButton: UIView {
     }
     
     
-    // MARK: - Open
+    // MARK: -
     open override func draw(_ rect: CGRect) {
         responseCircle()
+    }
+    
+    public func cells() -> [LNFloatingActionButtonCell] {
+        var result: [LNFloatingActionButtonCell] = []
+        guard let source = dataSource else { return result }
+        
+        for i in 0..<source.numberOfCells(self) {
+            result.append(source.cellForIndex(i))
+        }
+        return result
     }
     
     open func btnOpenAnimation() {
         UIView.animate(withDuration: 0.3) { () -> Void in
             self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
-        }
-    }
-    
-    open func cellOpenAnimation() {
-        var cellHeight = btnToCellMargin
-        var delay = 0.0
-        cells().forEach { cell in
-            cellHeight += cell.size + cellMargin
-            cell.frame.origin.y = -cellHeight
-            cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
-            UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.3,
-                           options: UIViewAnimationOptions(),
-                           animations: { _ in
-                            cell.layer.transform = CATransform3DIdentity
-                            cell.alpha = 1
-            }, completion: nil)
-            delay += 0.1
         }
     }
     
@@ -110,7 +105,7 @@ open class LNFloatingActionButton: UIView {
         // TODO: remove cell
         btnOpenAnimation()
         cells().forEach { insert(cell: $0) }
-        cellOpenAnimation()
+        cellOpenAnimation(self)
         isClosed = false
     }
     
@@ -153,16 +148,6 @@ open class LNFloatingActionButton: UIView {
         circleLayer.backgroundColor = color.cgColor
         circleLayer.cornerRadius = self.frame.size.width/2  // FIXME: when width != height
         layer.addSublayer(circleLayer)
-    }
-    
-    private func cells() -> [LNFloatingActionButtonCell] {
-        var result: [LNFloatingActionButtonCell] = []
-        guard let source = dataSource else { return result }
-        
-        for i in 0..<source.numberOfCells(self) {
-            result.append(source.cellForIndex(i))
-        }
-        return result
     }
     
     private func insert(cell: LNFloatingActionButtonCell) {
@@ -215,5 +200,26 @@ open class LNFloatingActionButton: UIView {
         }
         
         return super.hitTest(point, with: event)
+    }
+}
+
+
+// MARK: - animation
+extension LNFloatingActionButton {
+    open func popCellAnimationWithOpen() {
+        var cellHeight = btnToCellMargin
+        var delay = 0.0
+        cells().forEach { cell in
+            cellHeight += cell.size + cellMargin
+            cell.frame.origin.y = -cellHeight
+            cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
+            UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.3,
+                           options: UIViewAnimationOptions(),
+                           animations: { _ in
+                            cell.layer.transform = CATransform3DIdentity
+                            cell.alpha = 1
+            }, completion: nil)
+            delay += 0.1
+        }
     }
 }
