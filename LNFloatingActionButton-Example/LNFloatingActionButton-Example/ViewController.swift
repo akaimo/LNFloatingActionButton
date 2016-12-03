@@ -30,7 +30,8 @@ class ViewController: UIViewController {
         floatingActionButton = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
         floatingActionButton.delegate = self
         floatingActionButton.dataSource = self
-        floatingActionButton.imageView.image = UIImage(named: "plus")
+        floatingActionButton.closedImage = UIImage(named: "plus")
+//        floatingActionButton.openedImage = UIImage(named: "like")
 //        floatingActionButton.cellAnimationWithOpen = { btn in btn.customeAnimation() }
         view.addSubview(floatingActionButton)
     }
