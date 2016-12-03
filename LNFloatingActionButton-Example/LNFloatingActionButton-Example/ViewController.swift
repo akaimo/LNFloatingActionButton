@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         floatingActionButton.delegate = self
         floatingActionButton.dataSource = self
         floatingActionButton.imageView.image = UIImage(named: "plus")
-//        floatingActionButton.cellOpenAnimation = { btn in btn.customeAnimation() }
+//        floatingActionButton.cellAnimationWithOpen = { btn in btn.customeAnimation() }
         view.addSubview(floatingActionButton)
     }
 

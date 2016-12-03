@@ -48,7 +48,10 @@ open class LNFloatingActionButton: UIView {
     
     private var touching = false
     
-    open var cellOpenAnimation: (LNFloatingActionButton) -> () = { btn in btn.popCellAnimationWithOpen() }
+    open var btnAnimationWithOpen: (LNFloatingActionButton) -> () = { $0.rotate45BtnAnimationWithOpen() }
+    open var btnAnimationWithClose: (LNFloatingActionButton) -> () = { $0.rotate45BtnAnimationWithClose() }
+    open var cellAnimationWithOpen: (LNFloatingActionButton) -> () = { $0.popCellAnimationWithOpen() }
+    open var cellAnimationWothClose: (LNFloatingActionButton) -> () = { $0.popCellAnimationWithClose() }
     
     
     // MARK: - init
@@ -78,40 +81,17 @@ open class LNFloatingActionButton: UIView {
         return result
     }
     
-    open func btnOpenAnimation() {
-        UIView.animate(withDuration: 0.3) { () -> Void in
-            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
-        }
-    }
-    
-    open func btnCloseAnimation() {
-        UIView.animate(withDuration: 0.3) { () -> Void in
-            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 0 / 180.0)
-        }
-    }
-    
-    open func cellCloseAnimation() {
-        var delay = 0.0
-        cells().forEach { cell in
-            UIView.animate(withDuration: 0.15, delay: delay, options: UIViewAnimationOptions(), animations: { _ in
-                cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
-                cell.alpha = 0
-            }, completion: nil)
-            delay += 0.1
-        }
-    }
-    
-    open func open() {
+    public func open() {
         // TODO: remove cell
-        btnOpenAnimation()
+        btnAnimationWithOpen(self)
         cells().forEach { insert(cell: $0) }
-        cellOpenAnimation(self)
+        cellAnimationWithOpen(self)
         isClosed = false
     }
     
-    open func close() {
-        btnCloseAnimation()
-        cellCloseAnimation()
+    public func close() {
+        btnAnimationWithClose(self)
+        cellAnimationWothClose(self)
         isClosed = true
     }
     
@@ -206,7 +186,7 @@ open class LNFloatingActionButton: UIView {
 
 // MARK: - animation
 extension LNFloatingActionButton {
-    open func popCellAnimationWithOpen() {
+    public func popCellAnimationWithOpen() {
         var cellHeight = btnToCellMargin
         var delay = 0.0
         cells().forEach { cell in
@@ -220,6 +200,29 @@ extension LNFloatingActionButton {
                             cell.alpha = 1
             }, completion: nil)
             delay += 0.1
+        }
+    }
+    
+    public func popCellAnimationWithClose() {
+        var delay = 0.0
+        cells().forEach { cell in
+            UIView.animate(withDuration: 0.15, delay: delay, options: UIViewAnimationOptions(), animations: { _ in
+                cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
+                cell.alpha = 0
+            }, completion: nil)
+            delay += 0.1
+        }
+    }
+    
+    public func rotate45BtnAnimationWithOpen() {
+        UIView.animate(withDuration: 0.3) { () -> Void in
+            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
+        }
+    }
+    
+    public func rotate45BtnAnimationWithClose() {
+        UIView.animate(withDuration: 0.3) { () -> Void in
+            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 0 / 180.0)
         }
     }
 }
