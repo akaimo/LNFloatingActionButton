@@ -77,6 +77,8 @@ open class LNFloatingActionButtonCell: UIView {
         imageView.clipsToBounds = false
         self.addSubview(imageView)
         resizeSubviews()
+        titleLabel.layer.cornerRadius = 5
+        titleLabel.layer.masksToBounds = true
         self.addSubview(titleLabel)
     }
     
@@ -120,7 +122,7 @@ open class LNFloatingActionButtonCell: UIView {
 
 class PaddingLabel: UILabel {
     // TODO: customize
-    var padding = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+    var padding = UIEdgeInsets(top: 4, left: 6, bottom: 4, right: 6)
     
     override func drawText(in rect: CGRect) {
         let newRect = UIEdgeInsetsInsetRect(rect, padding)
