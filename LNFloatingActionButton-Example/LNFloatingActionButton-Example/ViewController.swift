@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let cell = LNFloatingActionButtonCell()
-        cell.title = "sample"
-        cell.titleLabelSize = CGSize(width: 100, height: 40)
+        cell.title = "sample text"
+//        cell.titleLabelSize = CGSize(width: 100, height: 40)
         cell.titleColor = UIColor.red
         cell.titleLabelBackgroundColor = UIColor.blue
         

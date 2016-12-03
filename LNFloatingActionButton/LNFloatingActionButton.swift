@@ -22,6 +22,7 @@ import QuartzCore
 
 open class LNFloatingActionButton: UIView {
     open let imageView = UIImageView()
+    // TODO: image after opening
     private var circleLayer: CAShapeLayer = CAShapeLayer()
     
     open var internalRatio: CGFloat = 0.75

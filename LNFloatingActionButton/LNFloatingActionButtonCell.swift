@@ -11,9 +11,10 @@ import UIKit
 open class LNFloatingActionButtonCell: UIView {
     weak var actionButton: LNFloatingActionButton?
     private let imageView = UIImageView()
-    private let titleLabel = UILabel()  // TODO: set padding
+    private let titleLabel = PaddingLabel()
     
     open var internalRatio: CGFloat = 0.75
+    open var titleMargin: CGFloat = 10.0
     open var responsible = true
     
     open var size: CGFloat = 42 {
@@ -86,7 +87,7 @@ open class LNFloatingActionButtonCell: UIView {
     }
     
     private func setTitleLabelPosition() {
-        titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
+        titleLabel.frame.origin.x = -titleLabel.frame.size.width - titleMargin
         titleLabel.frame.origin.y = self.frame.height/2 - titleLabel.frame.size.height/2
     }
     
@@ -112,4 +113,32 @@ open class LNFloatingActionButtonCell: UIView {
         }
     }
     
+}
+
+
+
+
+class PaddingLabel: UILabel {
+    // TODO: customize
+    var padding = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+    
+    override func drawText(in rect: CGRect) {
+        let newRect = UIEdgeInsetsInsetRect(rect, padding)
+        super.drawText(in: newRect)
+    }
+    
+    override public var intrinsicContentSize: CGSize {
+        var intrinsicContentSize = super.intrinsicContentSize
+        intrinsicContentSize.height += padding.top + padding.bottom
+        intrinsicContentSize.width += padding.left + padding.right
+        return intrinsicContentSize
+    }
+    
+    override func sizeToFit() {
+        super.sizeToFit()
+        frame = CGRect(x: frame.origin.x + (padding.left + padding.right)/2,
+                       y: frame.origin.y + (padding.top + padding.bottom)/2,
+                       width: frame.size.width + padding.left + padding.right,
+                       height: frame.size.height + padding.top + padding.bottom)
+    }
 }
