@@ -29,8 +29,9 @@ open class LNFloatingActionButton: UIView {
     open var cellMargin: CGFloat = 10.0
     open var btnToCellMargin: CGFloat = 15.0
     
-    open override var frame: CGRect {
+    open var size: CGFloat = 50 {
         didSet {
+            frame.size = CGSize(width: size, height: size)
             resizeSubviews()
         }
     }
@@ -49,8 +50,8 @@ open class LNFloatingActionButton: UIView {
     
     
     // MARK: - init
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(x: CGFloat, y: CGFloat) {
+        super.init(frame: CGRect(x: x, y: y, width: size, height: size))
         setup()
     }
     

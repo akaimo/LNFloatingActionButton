@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         cells.append(LNFloatingActionButtonCell())
         cells.append(cell)
         
-        floatingActionButton = LNFloatingActionButton(frame: CGRect(x: view.frame.size.width - 100, y: view.frame.size.height - 100, width: 50, height: 50))
+        floatingActionButton = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
         floatingActionButton.delegate = self
         floatingActionButton.dataSource = self
         floatingActionButton.imageView.image = UIImage(named: "plus")
