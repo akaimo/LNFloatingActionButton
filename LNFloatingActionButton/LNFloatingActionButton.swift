@@ -21,7 +21,6 @@ import QuartzCore
 
 
 open class LNFloatingActionButton: UIView {
-    // TODO: private when fix btn animation
     open let imageView = UIImageView()
     open var closedImage: UIImage? = nil {
         didSet {
@@ -29,6 +28,7 @@ open class LNFloatingActionButton: UIView {
         }
     }
     open var openedImage: UIImage? = nil
+    private var originalImage: UIImage? = nil
     private var circleLayer: CAShapeLayer = CAShapeLayer()
     
     open var internalRatio: CGFloat = 0.75
@@ -92,6 +92,7 @@ open class LNFloatingActionButton: UIView {
         if openedImage == nil {
             btnAnimationWithOpen(self)
         } else {
+            originalImage = imageView.image
             imageView.image = openedImage
         }
         cells().forEach { insert(cell: $0) }
@@ -103,7 +104,8 @@ open class LNFloatingActionButton: UIView {
         if openedImage == nil {
             btnAnimationWithClose(self)
         } else {
-            imageView.image = closedImage
+            imageView.image = originalImage
+            originalImage = nil
         }
         cellAnimationWothClose(self)
         isClosed = true
