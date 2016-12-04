@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         floatingActionButton.closedImage = UIImage(named: "plus")
 //        floatingActionButton.openedImage = UIImage(named: "like")
 //        floatingActionButton.cellAnimationWithOpen = { btn in btn.customeAnimation() }
+//        floatingActionButton.titleLabelPosition = .left
         view.addSubview(floatingActionButton)
     }
 

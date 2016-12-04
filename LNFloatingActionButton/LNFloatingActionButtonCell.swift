@@ -9,7 +9,11 @@
 import UIKit
 
 open class LNFloatingActionButtonCell: UIView {
-    weak var actionButton: LNFloatingActionButton?
+    weak var actionButton: LNFloatingActionButton? {
+        didSet {
+            setTitleLabelPosition()
+        }
+    }
     private let imageView = UIImageView()
     private let titleLabel = PaddingLabel()
     
@@ -101,8 +105,19 @@ open class LNFloatingActionButtonCell: UIView {
     }
     
     private func setTitleLabelPosition() {
-        titleLabel.frame.origin.x = -titleLabel.frame.size.width - titleMargin
-        titleLabel.frame.origin.y = self.frame.height/2 - titleLabel.frame.size.height/2
+        switch actionButton?.titleLabelPosition {
+        case .some(let titleLabelPosition):
+            switch titleLabelPosition {
+                case .left:
+                    titleLabel.frame.origin.x = -titleLabel.frame.size.width - titleMargin
+                case .right:
+                    titleLabel.frame.origin.x = size + titleMargin
+            }
+            
+        case .none:
+            titleLabel.frame.origin.x = -titleLabel.frame.size.width - titleMargin
+        }
+        titleLabel.frame.origin.y = size/2 - titleLabel.frame.size.height/2
     }
     
     private func setTitleLabelAlignment() {

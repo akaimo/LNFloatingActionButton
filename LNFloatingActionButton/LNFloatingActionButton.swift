@@ -49,6 +49,8 @@ open class LNFloatingActionButton: UIView {
     open var responsible = true
     open fileprivate(set) var isClosed = true
     
+    open var titleLabelPosition = TitleLabelPosition.left
+    
     open var delegate:   LNFloatingActionButtonDelegate?
     open var dataSource: LNFloatingActionButtonDataSource?
     
@@ -241,4 +243,11 @@ extension LNFloatingActionButton {
             self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 0 / 180.0)
         }
     }
+}
+
+
+
+public enum TitleLabelPosition {
+    case left
+    case right
 }
