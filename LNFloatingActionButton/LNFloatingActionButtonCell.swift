@@ -28,9 +28,21 @@ open class LNFloatingActionButtonCell: UIView {
         didSet {
             guard let size = titleLabelSize else { return }
             titleLabel.frame.size = size
-            titleLabel.textAlignment = .right  // TODO: left, center
+            setTitleLabelAlignment()
             titleLabel.baselineAdjustment = .alignCenters
             setTitleLabelPosition()
+        }
+    }
+    open var titleTextAlignment = TitleTextAlignment.right {
+        didSet {
+            switch titleTextAlignment {
+            case .right:
+                titleLabel.textAlignment = .right
+            case .center:
+                titleLabel.textAlignment = .center
+            case .left:
+                titleLabel.textAlignment = .left
+            }
         }
     }
     open var color = UIColor(red: 0/255.0, green: 157/255.0, blue: 238/255.0, alpha: 1.0) {
@@ -93,6 +105,17 @@ open class LNFloatingActionButtonCell: UIView {
         titleLabel.frame.origin.y = self.frame.height/2 - titleLabel.frame.size.height/2
     }
     
+    private func setTitleLabelAlignment() {
+        switch titleTextAlignment {
+        case .right:
+            titleLabel.textAlignment = .right
+        case .center:
+            titleLabel.textAlignment = .center
+        case .left:
+            titleLabel.textAlignment = .left
+        }
+    }
+    
     
     // MARK: - Event
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -119,6 +142,11 @@ open class LNFloatingActionButtonCell: UIView {
 
 
 
+public enum TitleTextAlignment {
+    case left
+    case center
+    case right
+}
 
 class PaddingLabel: UILabel {
     // TODO: customize
