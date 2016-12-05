@@ -34,6 +34,7 @@ class ViewController: UIViewController {
 //        floatingActionButton.openedImage = UIImage(named: "like")
 //        floatingActionButton.cellAnimationWithOpen = { btn in btn.customeAnimation() }
 //        floatingActionButton.titleLabelPosition = .left
+//        floatingActionButton.cellHorizontalAlign = .left
         view.addSubview(floatingActionButton)
     }
 
