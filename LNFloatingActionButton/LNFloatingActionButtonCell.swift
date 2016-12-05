@@ -9,66 +9,22 @@
 import UIKit
 
 open class LNFloatingActionButtonCell: UIView {
-    weak var actionButton: LNFloatingActionButton? {
-        didSet {
-            setTitleLabelPosition()
-        }
-    }
+    weak var actionButton: LNFloatingActionButton?
     private let imageView = UIImageView()
-    private let titleLabel = PaddingLabel()
     
     open var internalRatio: CGFloat = 0.75
-    open var titleMargin: CGFloat = 10.0
     open var responsible = true
     
     open var size: CGFloat = 42 {
         didSet {
             self.center = CGPoint(x: size/2, y: size/2)
-            setTitleLabelPosition()
             resizeSubviews()
         }
     }
-    open var titleLabelSize: CGSize? = nil {
-        didSet {
-            guard let size = titleLabelSize else { return }
-            titleLabel.frame.size = size
-            setTitleLabelAlignment()
-            titleLabel.baselineAdjustment = .alignCenters
-            setTitleLabelPosition()
-        }
-    }
-    open var titleTextAlignment = TitleTextAlignment.right {
-        didSet {
-            switch titleTextAlignment {
-            case .right:
-                titleLabel.textAlignment = .right
-            case .center:
-                titleLabel.textAlignment = .center
-            case .left:
-                titleLabel.textAlignment = .left
-            }
-        }
-    }
+    
     open var color = UIColor(red: 0/255.0, green: 157/255.0, blue: 238/255.0, alpha: 1.0) {
         didSet {
             self.backgroundColor = color
-        }
-    }
-    open var titleColor = UIColor.black {
-        didSet {
-            titleLabel.textColor = titleColor
-        }
-    }
-    open var titleLabelBackgroundColor = UIColor.clear {
-        didSet {
-            titleLabel.backgroundColor = titleLabelBackgroundColor
-        }
-    }
-    open var title: String? = nil {
-        didSet {
-            titleLabel.text = title
-            titleLabel.sizeToFit()
-            setTitleLabelPosition()
         }
     }
     
@@ -85,50 +41,21 @@ open class LNFloatingActionButtonCell: UIView {
     }
     
 
-    // MARK: - Private
-    private func setup() {
+    // MARK: -
+    func setup() {
         self.backgroundColor = color
         self.clipsToBounds = false
         self.layer.cornerRadius = frame.width / 2
         imageView.clipsToBounds = false
         self.addSubview(imageView)
         resizeSubviews()
-        titleLabel.layer.cornerRadius = 5
-        titleLabel.layer.masksToBounds = true
-        self.addSubview(titleLabel)
+        
     }
     
-    private func resizeSubviews() {
+    func resizeSubviews() {
         let size = CGSize(width: frame.width * 0.5, height: frame.height * 0.5)
         imageView.frame = CGRect(x: frame.width - frame.width * internalRatio, y: frame.height - frame.height * internalRatio,
                                  width: size.width, height: size.height)
-    }
-    
-    private func setTitleLabelPosition() {
-        switch actionButton?.titleLabelPosition {
-        case .some(let titleLabelPosition):
-            switch titleLabelPosition {
-                case .left:
-                    titleLabel.frame.origin.x = -titleLabel.frame.size.width - titleMargin
-                case .right:
-                    titleLabel.frame.origin.x = size + titleMargin
-            }
-            
-        case .none:
-            titleLabel.frame.origin.x = -titleLabel.frame.size.width - titleMargin
-        }
-        titleLabel.frame.origin.y = size/2 - titleLabel.frame.size.height/2
-    }
-    
-    private func setTitleLabelAlignment() {
-        switch titleTextAlignment {
-        case .right:
-            titleLabel.textAlignment = .right
-        case .center:
-            titleLabel.textAlignment = .center
-        case .left:
-            titleLabel.textAlignment = .left
-        }
     }
     
     
