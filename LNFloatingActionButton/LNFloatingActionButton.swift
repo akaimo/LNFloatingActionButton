@@ -257,17 +257,3 @@ extension LNFloatingActionButton {
         }
     }
 }
-
-
-
-public enum TitleLabelPosition {
-    case left
-    case right
-}
-
-public enum CellHorizontalAlign {
-    case left
-    case center
-    case right
-    
-}
