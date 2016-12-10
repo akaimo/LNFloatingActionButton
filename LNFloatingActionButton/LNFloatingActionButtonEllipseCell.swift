@@ -53,6 +53,7 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
             case .left:
                 titleLabel.textAlignment = .left
             }
+            resizeSubviews()
         }
     }
     open var titleColor = UIColor.black {
@@ -70,10 +71,8 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
     
     
     // MARK: - init
-    public init(widht: CGFloat, height: CGFloat) {
+    override public init() {
         super.init()
-        self.ellipseSize = CGSize(width: widht, height: height)
-        resizeSubviews()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -119,8 +118,20 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
             } else {
                 let imageSize = self.frame.size.height / 2
                 imageView.frame = CGRect(x: cellPadding, y: (self.frame.size.height - imageSize) / 2, width: imageSize, height: imageSize)
-                // TODO: switch textAlignment
-                titleLabel.frame.origin = CGPoint(x: cellPadding + imageSize + 4, y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
+                switch titleTextAlignment {
+                case .left:
+                    titleLabel.frame.origin = CGPoint(x: cellPadding + imageSize + 4,
+                                                      y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
+                    
+                case .center:
+                    titleLabel.frame.origin = CGPoint(x: 0,
+                                                      y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
+                    titleLabel.center.x = self.center.x + imageSize/2
+                    
+                case .right:
+                    titleLabel.frame.origin = CGPoint(x: self.frame.size.width - (titleLabel.frame.size.width + cellPadding),
+                                                      y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
+                }
             }
         }
     }

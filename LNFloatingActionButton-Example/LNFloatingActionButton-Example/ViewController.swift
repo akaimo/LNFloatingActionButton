@@ -27,10 +27,12 @@ class ViewController: UIViewController {
         
 //        cells.append(LNFloatingActionButtonCell())
         cells.append(cell)
-        let ellipseCell = LNFloatingActionButtonEllipseCell(widht: 100, height: 40)
+        let ellipseCell = LNFloatingActionButtonEllipseCell()
+        ellipseCell.ellipseSize = CGSize(width: 150, height: 30)
+        ellipseCell.titleTextAlignment = .center
         ellipseCell.title = "test text"
         ellipseCell.image = UIImage(named: "like")
-        ellipseCell.isVariableSize = true
+//        ellipseCell.isVariableSize = true
         cells.append(ellipseCell)
         
         floatingActionButton = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
