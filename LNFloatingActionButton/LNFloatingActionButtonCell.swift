@@ -11,6 +11,11 @@ import UIKit
 open class LNFloatingActionButtonCell: UIView {
     weak var actionButton: LNFloatingActionButton?
     private let imageView = UIImageView()
+    open var image: UIImage? {
+        didSet {
+            imageView.image = image
+        }
+    }
     
     open var internalRatio: CGFloat = 0.75
     open var responsible = true

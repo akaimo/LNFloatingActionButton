@@ -23,9 +23,10 @@ class ViewController: UIViewController {
 //        cell.titleLabelSize = CGSize(width: 200, height: 40)
         cell.titleColor = UIColor.red
         cell.titleLabelBackgroundColor = UIColor.blue
+        cell.image = UIImage(named: "like")
         
-        cells.append(LNFloatingActionButtonCell())
-//        cells.append(cell)
+//        cells.append(LNFloatingActionButtonCell())
+        cells.append(cell)
         let ellipseCell = LNFloatingActionButtonEllipseCell(widht: 100, height: 40)
         print(ellipseCell.size)
         ellipseCell.size = 100

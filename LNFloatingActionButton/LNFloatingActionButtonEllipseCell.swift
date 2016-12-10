@@ -58,6 +58,7 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
     public init(widht: CGFloat, height: CGFloat) {
         super.init()
         self.ellipseSize = CGSize(width: widht, height: height)
+        resizeSubviews()
     }
     
     required public init?(coder aDecoder: NSCoder) {
