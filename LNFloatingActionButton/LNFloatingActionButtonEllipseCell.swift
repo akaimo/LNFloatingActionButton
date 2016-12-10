@@ -107,7 +107,10 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
                 self.frame.size.width = titleLabel.frame.size.width + 2 * padding
                 titleLabel.center = self.center
             } else {
-                // TODO
+                let imageSize = self.frame.size.height / 2
+                imageView.frame = CGRect(x: padding, y: (self.frame.size.height - imageSize) / 2, width: imageSize, height: imageSize)
+                titleLabel.frame.origin = CGPoint(x: padding + imageSize + 4, y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
+                self.frame.size.width = padding + imageSize + 4 + titleLabel.frame.size.width + padding
             }
         } else {
             if image == nil {

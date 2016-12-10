@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         cells.append(cell)
         let ellipseCell = LNFloatingActionButtonEllipseCell(widht: 100, height: 40)
         ellipseCell.title = "test text"
-//        ellipseCell.image = UIImage(named: "like")
+        ellipseCell.image = UIImage(named: "like")
         ellipseCell.isVariableSize = true
         cells.append(ellipseCell)
         
