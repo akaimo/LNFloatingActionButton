@@ -26,6 +26,16 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
         }
     }
     
+    open var isVariableSize = false
+    
+    private let imageView = UIImageView()
+    override open var image: UIImage? {
+        didSet {
+            imageView.image = image
+            addImageView()
+        }
+    }
+    
     private let titleLabel = PaddingLabel()
     open var titleMargin: CGFloat = 10.0
     open var titleTextAlignment = TitleTextAlignment.right {
@@ -49,7 +59,7 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
         didSet {
             titleLabel.text = title
             titleLabel.sizeToFit()
-//            setTitleLabelPosition()
+            addTitleLabel()
         }
     }
     
@@ -68,13 +78,40 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
     
     // MARK: -
     override open func setup() {
-        self.frame.size = ellipseSize
         super.setup()
+        self.frame.size = ellipseSize
         self.layer.cornerRadius = cornerRadius
+    }
+    
+    override open func addImageView() {
+        imageView.clipsToBounds = false
+        self.addSubview(imageView)
+        resizeSubviews()
+    }
+    
+    open func addTitleLabel() {
         self.addSubview(titleLabel)
+        resizeSubviews()
     }
     
     override open func resizeSubviews() {
-        // TODO: setup imageView, titleLabel position
+        titleLabel.sizeToFit()
+        if isVariableSize {
+            if image == nil {
+                // TODO
+            } else {
+                // TODO
+            }
+        } else {
+            if image == nil {
+                titleLabel.center = self.center
+            } else {
+                let imageSize = self.frame.size.height / 2
+                let padding: CGFloat = 10.0
+                imageView.frame = CGRect(x: padding, y: (self.frame.size.height - imageSize) / 2, width: imageSize, height: imageSize)
+                // TODO: switch textAlignment
+                titleLabel.frame.origin = CGPoint(x: padding + imageSize + 4, y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
+            }
+        }
     }
 }

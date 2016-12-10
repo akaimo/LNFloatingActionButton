@@ -14,6 +14,7 @@ open class LNFloatingActionButtonCell: UIView {
     open var image: UIImage? {
         didSet {
             imageView.image = image
+            addImageView()
         }
     }
     
@@ -50,6 +51,9 @@ open class LNFloatingActionButtonCell: UIView {
         self.backgroundColor = color
         self.clipsToBounds = false
         self.layer.cornerRadius = frame.width / 2
+    }
+    
+    open func addImageView() {
         imageView.clipsToBounds = false
         self.addSubview(imageView)
         resizeSubviews()
