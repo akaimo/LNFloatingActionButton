@@ -92,7 +92,6 @@ open class LNFloatingActionButton: UIView {
     
     public func open() {
 //        self.subviews.filter { !($0 is UIImageView) }.forEach { $0.removeFromSuperview() }
-        print(self.subviews)
         if openedImage == nil {
             btnAnimationWithOpen(self)
         } else {
