@@ -26,7 +26,11 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
         }
     }
     
-    open var isVariableSize = false
+    open var isVariableSize = false {
+        didSet {
+            resizeSubviews()
+        }
+    }
     
     private let imageView = UIImageView()
     override open var image: UIImage? {
@@ -96,9 +100,12 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
     
     override open func resizeSubviews() {
         titleLabel.sizeToFit()
+        let padding: CGFloat = 10.0
+        
         if isVariableSize {
             if image == nil {
-                // TODO
+                self.frame.size.width = titleLabel.frame.size.width + 2 * padding
+                titleLabel.center = self.center
             } else {
                 // TODO
             }
@@ -107,7 +114,6 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
                 titleLabel.center = self.center
             } else {
                 let imageSize = self.frame.size.height / 2
-                let padding: CGFloat = 10.0
                 imageView.frame = CGRect(x: padding, y: (self.frame.size.height - imageSize) / 2, width: imageSize, height: imageSize)
                 // TODO: switch textAlignment
                 titleLabel.frame.origin = CGPoint(x: padding + imageSize + 4, y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
