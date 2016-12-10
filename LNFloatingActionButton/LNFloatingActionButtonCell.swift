@@ -36,23 +36,21 @@ open class LNFloatingActionButtonCell: UIView {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
     
 
     // MARK: -
-    func setup() {
+    open func setup() {
         self.backgroundColor = color
         self.clipsToBounds = false
         self.layer.cornerRadius = frame.width / 2
         imageView.clipsToBounds = false
         self.addSubview(imageView)
         resizeSubviews()
-        
     }
     
-    func resizeSubviews() {
+    open func resizeSubviews() {
         let size = CGSize(width: frame.width * 0.5, height: frame.height * 0.5)
         imageView.frame = CGRect(x: frame.width - frame.width * internalRatio, y: frame.height - frame.height * internalRatio,
                                  width: size.width, height: size.height)

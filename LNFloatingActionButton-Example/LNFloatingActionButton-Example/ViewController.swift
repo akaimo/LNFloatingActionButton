@@ -25,7 +25,11 @@ class ViewController: UIViewController {
         cell.titleLabelBackgroundColor = UIColor.blue
         
         cells.append(LNFloatingActionButtonCell())
-        cells.append(cell)
+//        cells.append(cell)
+        let ellipseCell = LNFloatingActionButtonEllipseCell(widht: 100, height: 40)
+        print(ellipseCell.size)
+        ellipseCell.size = 100
+        cells.append(ellipseCell)
         
         floatingActionButton = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
         floatingActionButton.delegate = self

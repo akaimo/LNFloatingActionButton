@@ -62,7 +62,7 @@ open class LNFloatingActionButtonTitleCell: LNFloatingActionButtonCell {
     }
     
     
-    override func setup() {
+    override open func setup() {
         super.setup()
         titleLabel.layer.cornerRadius = 5
         titleLabel.layer.masksToBounds = true
