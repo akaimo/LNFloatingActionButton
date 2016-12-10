@@ -41,7 +41,8 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
     }
     
     private let titleLabel = PaddingLabel()
-    open var titleMargin: CGFloat = 10.0
+    open var titleMargin: CGFloat = 4.0
+    open var cellPadding: CGFloat = 10.0
     open var titleTextAlignment = TitleTextAlignment.right {
         didSet {
             switch titleTextAlignment {
@@ -100,26 +101,26 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
     
     override open func resizeSubviews() {
         titleLabel.sizeToFit()
-        let padding: CGFloat = 10.0
         
         if isVariableSize {
             if image == nil {
-                self.frame.size.width = titleLabel.frame.size.width + 2 * padding
+                self.frame.size.width = titleLabel.frame.size.width + 2*cellPadding
                 titleLabel.center = self.center
             } else {
                 let imageSize = self.frame.size.height / 2
-                imageView.frame = CGRect(x: padding, y: (self.frame.size.height - imageSize) / 2, width: imageSize, height: imageSize)
-                titleLabel.frame.origin = CGPoint(x: padding + imageSize + 4, y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
-                self.frame.size.width = padding + imageSize + 4 + titleLabel.frame.size.width + padding
+                imageView.frame = CGRect(x: cellPadding, y: (self.frame.size.height - imageSize) / 2, width: imageSize, height: imageSize)
+                titleLabel.frame.origin = CGPoint(x: cellPadding + imageSize + titleMargin,
+                                                  y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
+                self.frame.size.width = cellPadding + imageSize + titleMargin + titleLabel.frame.size.width + cellPadding
             }
         } else {
             if image == nil {
                 titleLabel.center = self.center
             } else {
                 let imageSize = self.frame.size.height / 2
-                imageView.frame = CGRect(x: padding, y: (self.frame.size.height - imageSize) / 2, width: imageSize, height: imageSize)
+                imageView.frame = CGRect(x: cellPadding, y: (self.frame.size.height - imageSize) / 2, width: imageSize, height: imageSize)
                 // TODO: switch textAlignment
-                titleLabel.frame.origin = CGPoint(x: padding + imageSize + 4, y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
+                titleLabel.frame.origin = CGPoint(x: cellPadding + imageSize + 4, y: (self.frame.size.height - titleLabel.frame.size.height) / 2)
             }
         }
     }
