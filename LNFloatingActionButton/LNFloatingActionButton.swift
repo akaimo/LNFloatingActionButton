@@ -49,7 +49,7 @@ open class LNFloatingActionButton: UIView {
     open var responsible = true
     open fileprivate(set) var isClosed = true
     
-    open var titleLabelPosition = TitleLabelPosition.left
+    open var titleLabelPosition = TitleLabelPosition.left  // TODO: move extension
     open var cellHorizontalAlign = CellHorizontalAlign.center
     
     open var delegate:   LNFloatingActionButtonDelegate?
@@ -214,6 +214,7 @@ open class LNFloatingActionButton: UIView {
 
 // MARK: - animation
 extension LNFloatingActionButton {
+    // MARK: - cell
     public func popCellAnimationWithOpen() {
         var cellHeight = btnToCellMargin
         var delay = 0.0
@@ -244,6 +245,7 @@ extension LNFloatingActionButton {
         }
     }
     
+    // MARK: - button
     public func rotate45BtnAnimationWithOpen() {
         UIView.animate(withDuration: 0.3) { () -> Void in
             self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)

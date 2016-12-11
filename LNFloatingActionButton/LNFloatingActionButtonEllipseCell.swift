@@ -10,8 +10,8 @@ import UIKit
 
 open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
     override open var size: CGFloat {
-        get { return 0.0 }
-        set { print("not used") }
+        get { return ellipseSize.height }
+        set { print("'size' should not be used") }
     }
     
     open var ellipseSize: CGSize = CGSize(width: 100, height: 30) {
