@@ -38,6 +38,8 @@ open class LNFloatingActionButton: UIView {
     open var size: CGFloat = 50 {
         didSet {
             frame.size = CGSize(width: size, height: size)
+            circleLayer.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+            circleLayer.cornerRadius = size / 2
             resizeSubviews()
         }
     }
@@ -145,7 +147,7 @@ open class LNFloatingActionButton: UIView {
         circleLayer.removeFromSuperlayer()
         circleLayer.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         circleLayer.backgroundColor = color.cgColor
-        circleLayer.cornerRadius = self.frame.size.width/2  // FIXME: when width != height
+        circleLayer.cornerRadius = size / 2
         layer.addSublayer(circleLayer)
     }
     

@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         
         
         floatingActionButton = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
+//        floatingActionButton.size = 56
         floatingActionButton.delegate = self
         floatingActionButton.dataSource = self
         floatingActionButton.closedImage = UIImage(named: "plus")
