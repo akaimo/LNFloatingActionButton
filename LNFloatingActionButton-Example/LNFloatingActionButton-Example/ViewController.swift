@@ -45,6 +45,11 @@ class ViewController: UIViewController {
         
         floatingActionButton = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
 //        floatingActionButton.size = 56
+        floatingActionButton.color = UIColor.white
+        floatingActionButton.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        floatingActionButton.shadowOpacity = 0.5
+        floatingActionButton.shadowRadius = 2.0
+        floatingActionButton.shadowPath = floatingActionButton.circlePath
         floatingActionButton.delegate = self
         floatingActionButton.dataSource = self
         floatingActionButton.closedImage = UIImage(named: "plus")

@@ -21,7 +21,7 @@ import QuartzCore
 
 
 open class LNFloatingActionButton: UIView {
-    open let imageView = UIImageView()
+    open let imageView = UIImageView()  // TODO: private
     open var closedImage: UIImage? = nil {
         didSet {
             imageView.image = closedImage
@@ -30,6 +30,26 @@ open class LNFloatingActionButton: UIView {
     open var openedImage: UIImage? = nil
     private var originalImage: UIImage? = nil
     private var circleLayer: CAShapeLayer = CAShapeLayer()
+    
+    open var shadowOffset: CGSize {
+        get { return circleLayer.shadowOffset }
+        set { circleLayer.shadowOffset = newValue }
+    }
+    open var shadowOpacity: Float {
+        get { return circleLayer.shadowOpacity }
+        set { circleLayer.shadowOpacity = newValue }
+    }
+    open var shadowRadius: CGFloat {
+        get { return circleLayer.shadowRadius }
+        set { circleLayer.shadowRadius = newValue }
+    }
+    open var shadowPath: CGPath? {
+        get { return circleLayer.shadowPath }
+        set { circleLayer.shadowPath = newValue }
+    }
+    open var circlePath: CGPath? {
+        return circleLayer.path
+    }
     
     open var internalRatio: CGFloat = 0.75
     open var cellMargin: CGFloat = 10.0
