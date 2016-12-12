@@ -49,7 +49,8 @@ open class LNFloatingActionButton: UIView {
     open var responsible = true
     open fileprivate(set) var isClosed = true
     
-    open var titleLabelPosition = TitleLabelPosition.left
+    open var titleLabelPosition = TitleLabelPosition.left  // TODO: move extension
+    open var cellHorizontalAlign = CellHorizontalAlign.center
     
     open var delegate:   LNFloatingActionButtonDelegate?
     open var dataSource: LNFloatingActionButtonDataSource?
@@ -90,7 +91,7 @@ open class LNFloatingActionButton: UIView {
     }
     
     public func open() {
-        // TODO: remove cell
+//        self.subviews.filter { !($0 is UIImageView) }.forEach { $0.removeFromSuperview() }
         if openedImage == nil {
             btnAnimationWithOpen(self)
         } else {
@@ -150,7 +151,16 @@ open class LNFloatingActionButton: UIView {
     
     private func insert(cell: LNFloatingActionButtonCell) {
         cell.alpha = 0
-        cell.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
+        switch cellHorizontalAlign {
+        case .center:
+            cell.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
+        case .left:
+            cell.frame.origin.x = 0
+            cell.frame.origin.y = self.frame.size.height/2 - cell.frame.size.height/2
+        case .right:
+            cell.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
+            cell.frame.origin.x = self.frame.size.width - cell.frame.size.width
+        }
         cell.actionButton = self
         self.addSubview(cell)
     }
@@ -204,6 +214,7 @@ open class LNFloatingActionButton: UIView {
 
 // MARK: - animation
 extension LNFloatingActionButton {
+    // MARK: - cell
     public func popCellAnimationWithOpen() {
         var cellHeight = btnToCellMargin
         var delay = 0.0
@@ -227,11 +238,14 @@ extension LNFloatingActionButton {
             UIView.animate(withDuration: 0.15, delay: delay, options: UIViewAnimationOptions(), animations: { _ in
                 cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
                 cell.alpha = 0
-            }, completion: nil)
+            }, completion: { _ in
+                cell.layer.transform = CATransform3DIdentity
+            })
             delay += 0.1
         }
     }
     
+    // MARK: - button
     public func rotate45BtnAnimationWithOpen() {
         UIView.animate(withDuration: 0.3) { () -> Void in
             self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
@@ -243,11 +257,4 @@ extension LNFloatingActionButton {
             self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 0 / 180.0)
         }
     }
-}
-
-
-
-public enum TitleLabelPosition {
-    case left
-    case right
 }

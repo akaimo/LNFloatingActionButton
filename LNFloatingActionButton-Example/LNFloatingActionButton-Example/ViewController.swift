@@ -18,14 +18,30 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let cell = LNFloatingActionButtonCell()
-        cell.title = "sample text"
+//        let cell = LNFloatingActionButtonTitleCell()
+//        cell.title = "sample text"
 //        cell.titleLabelSize = CGSize(width: 200, height: 40)
-        cell.titleColor = UIColor.red
-        cell.titleLabelBackgroundColor = UIColor.blue
+//        cell.titleColor = UIColor.red
+//        cell.titleLabelBackgroundColor = UIColor.blue
+//        cell.image = UIImage(named: "like")
+//        
+//        cells.append(LNFloatingActionButtonCell())
+//        cells.append(cell)
+        let ellipseCell = LNFloatingActionButtonEllipseCell()
+        ellipseCell.ellipseSize = CGSize(width: 150, height: 30)
+        ellipseCell.titleTextAlignment = .center
+        ellipseCell.title = "test text"
+        ellipseCell.image = UIImage(named: "like")
+//        ellipseCell.isVariableSize = true
+        cells.append(ellipseCell)
         
-        cells.append(LNFloatingActionButtonCell())
-        cells.append(cell)
+        let ellipse2Cell = LNFloatingActionButtonEllipseCell()
+        ellipse2Cell.ellipseSize = CGSize(width: 150, height: 30)
+        ellipse2Cell.titleTextAlignment = .center
+        ellipse2Cell.title = "sample text"
+        ellipse2Cell.image = UIImage(named: "home")
+        cells.append(ellipse2Cell)
+        
         
         floatingActionButton = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
         floatingActionButton.delegate = self
@@ -34,6 +50,8 @@ class ViewController: UIViewController {
 //        floatingActionButton.openedImage = UIImage(named: "like")
 //        floatingActionButton.cellAnimationWithOpen = { btn in btn.customeAnimation() }
 //        floatingActionButton.titleLabelPosition = .left
+        floatingActionButton.cellHorizontalAlign = .left
+//        floatingActionButton.cellAnimationWithOpen = { btn in btn.popEllipseCellAnimationWithOpen() }
         view.addSubview(floatingActionButton)
     }
 

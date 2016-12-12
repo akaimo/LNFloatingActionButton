@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A205D79B1DF59A72001618DA /* LNFloatingActionButtonTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A205D79A1DF59A72001618DA /* LNFloatingActionButtonTitleCell.swift */; };
+		A205D79D1DF5A412001618DA /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A205D79C1DF5A412001618DA /* PaddingLabel.swift */; };
+		A205D79F1DF5A44C001618DA /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A205D79E1DF5A44C001618DA /* Enumerations.swift */; };
 		A249B3FE1DE949F900CC0B97 /* LNFloatingActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A249B4291DE95F5C00CC0B97 /* LNFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */; };
 		A249B42B1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A249B42A1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift */; };
+		A2F5DBD41DFBBD680073B36D /* LNFloatingActionButtonEllipseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F5DBD31DFBBD680073B36D /* LNFloatingActionButtonEllipseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A205D79A1DF59A72001618DA /* LNFloatingActionButtonTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNFloatingActionButtonTitleCell.swift; sourceTree = "<group>"; };
+		A205D79C1DF5A412001618DA /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		A205D79E1DF5A44C001618DA /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		A249B3F91DE949F900CC0B97 /* LNFloatingActionButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LNFloatingActionButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNFloatingActionButton.h; sourceTree = "<group>"; };
 		A249B3FD1DE949F900CC0B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNFloatingActionButton.swift; sourceTree = "<group>"; };
 		A249B42A1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNFloatingActionButtonCell.swift; sourceTree = "<group>"; };
+		A2F5DBD31DFBBD680073B36D /* LNFloatingActionButtonEllipseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNFloatingActionButtonEllipseCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,10 @@
 				A249B3FC1DE949F900CC0B97 /* LNFloatingActionButton.h */,
 				A249B4281DE95F5C00CC0B97 /* LNFloatingActionButton.swift */,
 				A249B42A1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift */,
+				A205D79A1DF59A72001618DA /* LNFloatingActionButtonTitleCell.swift */,
+				A2F5DBD31DFBBD680073B36D /* LNFloatingActionButtonEllipseCell.swift */,
+				A205D79C1DF5A412001618DA /* PaddingLabel.swift */,
+				A205D79E1DF5A44C001618DA /* Enumerations.swift */,
 				A249B3FD1DE949F900CC0B97 /* Info.plist */,
 			);
 			path = LNFloatingActionButton;
@@ -138,8 +150,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F5DBD41DFBBD680073B36D /* LNFloatingActionButtonEllipseCell.swift in Sources */,
+				A205D79D1DF5A412001618DA /* PaddingLabel.swift in Sources */,
 				A249B42B1DE992E000CC0B97 /* LNFloatingActionButtonCell.swift in Sources */,
 				A249B4291DE95F5C00CC0B97 /* LNFloatingActionButton.swift in Sources */,
+				A205D79F1DF5A44C001618DA /* Enumerations.swift in Sources */,
+				A205D79B1DF59A72001618DA /* LNFloatingActionButtonTitleCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
