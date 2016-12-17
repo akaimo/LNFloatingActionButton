@@ -68,6 +68,15 @@ open class LNFloatingActionButton: UIView {
             circleLayer.backgroundColor = color.cgColor
         }
     }
+    
+    open var isBackgroundView = false
+    private var backgroundView = UIView()
+    open var backgroundViewColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5) {
+        didSet {
+            backgroundView.backgroundColor = backgroundViewColor
+        }
+    }
+    
     open var responsible = true
     open fileprivate(set) var isClosed = true
     
@@ -114,6 +123,13 @@ open class LNFloatingActionButton: UIView {
     
     public func open() {
 //        self.subviews.filter { !($0 is UIImageView) }.forEach { $0.removeFromSuperview() }
+        if isBackgroundView {
+            backgroundView.frame = CGRect(x: -self.frame.origin.x, y: -self.frame.origin.y,
+                                          width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            backgroundView.backgroundColor = backgroundViewColor
+            self.addSubview(backgroundView)
+            self.sendSubview(toBack: backgroundView)
+        }
         if openedImage == nil {
             btnAnimationWithOpen(self)
         } else {
@@ -126,6 +142,7 @@ open class LNFloatingActionButton: UIView {
     }
     
     public func close() {
+        backgroundView.removeFromSuperview()
         if openedImage == nil {
             btnAnimationWithClose(self)
         } else {

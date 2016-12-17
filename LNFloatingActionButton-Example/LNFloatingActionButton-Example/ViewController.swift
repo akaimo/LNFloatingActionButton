@@ -58,6 +58,7 @@ class ViewController: UIViewController {
 //        floatingActionButton.titleLabelPosition = .left
         floatingActionButton.cellHorizontalAlign = .left
 //        floatingActionButton.cellAnimationWithOpen = { btn in btn.popEllipseCellAnimationWithOpen() }
+        floatingActionButton.isBackgroundView = true
         view.addSubview(floatingActionButton)
     }
 
