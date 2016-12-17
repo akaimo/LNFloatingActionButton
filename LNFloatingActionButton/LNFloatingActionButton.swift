@@ -63,13 +63,6 @@ open class LNFloatingActionButton: UIView {
             resizeSubviews()
         }
     }
-    open override var backgroundColor: UIColor? {
-        didSet {
-            backgroundColor = nil
-            guard let bc = backgroundColor else { return }
-            color = bc
-        }
-    }
     open var color = UIColor(red: 0/255.0, green: 157/255.0, blue: 238/255.0, alpha: 1.0) {
         didSet {
             circleLayer.backgroundColor = color.cgColor
