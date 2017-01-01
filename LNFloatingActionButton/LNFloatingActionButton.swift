@@ -19,6 +19,10 @@ import QuartzCore
     @objc optional func floatingActionButton(_ floatingActionButton: LNFloatingActionButton, didSelectItemAtIndex index: Int)
 }
 
+private extension Selector {
+    static let tapButton = #selector(LNFloatingActionButton.tapButton(_:))
+}
+
 
 open class LNFloatingActionButton: UIView {
     open let imageView = UIImageView()  // TODO: private
@@ -163,6 +167,8 @@ open class LNFloatingActionButton: UIView {
         imageView.clipsToBounds = false
         self.addSubview(imageView)
         resizeSubviews()
+        
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector.tapButton))
     }
     
     private func resizeSubviews() {
@@ -206,10 +212,6 @@ open class LNFloatingActionButton: UIView {
     
     
     // MARK: - Action
-    private func didTap() {
-        isClosed ? open() : close()
-    }
-    
     func didTap(cell: LNFloatingActionButtonCell) {
         guard let _ = dataSource else { return }
         cells().enumerated()
@@ -217,6 +219,9 @@ open class LNFloatingActionButton: UIView {
             .forEach { index, _ in delegate?.floatingActionButton?(self, didSelectItemAtIndex: index) }
     }
     
+    func tapButton(_ recognizer: UITapGestureRecognizer) {
+        isClosed ? open() : close()
+    }
     
     // MARK: - Event
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -227,7 +232,6 @@ open class LNFloatingActionButton: UIView {
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touching = false
         setNeedsDisplay()
-        didTap()
     }
     
     open override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {

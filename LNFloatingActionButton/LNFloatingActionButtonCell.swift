@@ -8,6 +8,10 @@
 
 import UIKit
 
+private extension Selector {
+    static let tapButton = #selector(LNFloatingActionButtonCell.tapButton(_:))
+}
+
 open class LNFloatingActionButtonCell: UIView {
     weak var actionButton: LNFloatingActionButton?
     private let imageView = UIImageView()
@@ -51,6 +55,7 @@ open class LNFloatingActionButtonCell: UIView {
         self.backgroundColor = color
         self.clipsToBounds = false
         self.layer.cornerRadius = frame.width / 2
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector.tapButton))
     }
     
     open func addImageView() {
@@ -78,13 +83,16 @@ open class LNFloatingActionButtonCell: UIView {
         if responsible {
             backgroundColor = color
         }
-        actionButton?.didTap(cell: self)
     }
     
     open override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
         if responsible {
             backgroundColor = color
         }
+    }
+    
+    func tapButton(_ recognizer: UITapGestureRecognizer) {
+        actionButton?.didTap(cell: self)
     }
     
 }
