@@ -72,6 +72,7 @@ open class LNFloatingActionButton: UIView {
             circleLayer.backgroundColor = color.cgColor
         }
     }
+    open var touchingColor: UIColor?
     
     open var isBackgroundView = false
     private var backgroundView = UIView()
@@ -179,8 +180,7 @@ open class LNFloatingActionButton: UIView {
     
     private func responseCircle() {
         if touching && responsible {
-            // TODO: Customize
-            circleLayer.backgroundColor = color.withAlphaComponent(0.5).cgColor
+            circleLayer.backgroundColor = touchingColor?.cgColor ?? color.withAlphaComponent(0.5).cgColor
         } else {
             circleLayer.backgroundColor = color.cgColor
         }

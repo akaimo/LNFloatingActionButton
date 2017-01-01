@@ -37,6 +37,7 @@ open class LNFloatingActionButtonCell: UIView {
             self.backgroundColor = color
         }
     }
+    open var touchingColor: UIColor?
     
     
     // MARK: - init
@@ -74,8 +75,7 @@ open class LNFloatingActionButtonCell: UIView {
     // MARK: - Event
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if responsible {
-            // TODO: Customize
-            backgroundColor = color.withAlphaComponent(0.5)
+            backgroundColor = touchingColor ?? color.withAlphaComponent(0.5)
         }
     }
     
