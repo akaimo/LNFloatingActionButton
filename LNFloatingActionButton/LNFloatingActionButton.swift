@@ -164,6 +164,7 @@ open class LNFloatingActionButton: UIView {
         self.backgroundColor = UIColor.clear
         self.clipsToBounds = false
         setupCircleLayer()
+        backgroundView.isUserInteractionEnabled = false
         
         imageView.clipsToBounds = false
         self.addSubview(imageView)
