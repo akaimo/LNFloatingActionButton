@@ -19,10 +19,6 @@ import QuartzCore
     @objc optional func floatingActionButton(_ floatingActionButton: LNFloatingActionButton, didSelectItemAtIndex index: Int)
 }
 
-private extension Selector {
-    static let tapButton = #selector(LNFloatingActionButton.tapButton(_:))
-}
-
 
 open class LNFloatingActionButton: UIView {
     open let imageView = UIImageView()  // TODO: private
@@ -164,13 +160,10 @@ open class LNFloatingActionButton: UIView {
         self.backgroundColor = UIColor.clear
         self.clipsToBounds = false
         setupCircleLayer()
-        backgroundView.isUserInteractionEnabled = false
         
         imageView.clipsToBounds = false
         self.addSubview(imageView)
         resizeSubviews()
-        
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector.tapButton))
     }
     
     private func resizeSubviews() {
@@ -220,17 +213,24 @@ open class LNFloatingActionButton: UIView {
             .forEach { index, _ in delegate?.floatingActionButton?(self, didSelectItemAtIndex: index) }
     }
     
-    func tapButton(_ recognizer: UITapGestureRecognizer) {
-        isClosed ? open() : close()
-    }
-    
     // MARK: - Event
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.touching = true
+        for touch in touches {
+            if touch.view === self {
+                self.touching = true
+            }
+        }
         setNeedsDisplay()
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            if touch.view === backgroundView {
+                close()
+            } else if touch.view === self {
+                isClosed ? open() : close()
+            }
+        }
         self.touching = false
         setNeedsDisplay()
     }
@@ -244,10 +244,17 @@ open class LNFloatingActionButton: UIView {
         for cell in cells() {
             let pointForTargetView = cell.convert(point, from: self)
             
-            if (cell.bounds.contains(pointForTargetView)) {
+            if cell.bounds.contains(pointForTargetView) {
                 if cell.isUserInteractionEnabled {
                     return cell.hitTest(pointForTargetView, with: event)
                 }
+            }
+        }
+        
+        let pointForBackgroundView = backgroundView.convert(point, from: self)
+        if backgroundView.bounds.contains(pointForBackgroundView) {
+            if self.bounds.contains(point) == false {
+                return backgroundView
             }
         }
         
