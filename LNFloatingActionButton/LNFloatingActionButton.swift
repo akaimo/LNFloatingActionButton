@@ -71,7 +71,7 @@ open class LNFloatingActionButton: UIView {
     open var touchingColor: UIColor?
     
     open var isBackgroundView = false
-    private var backgroundView = UIView()
+    private var backgroundView = UIControl()
     open var backgroundViewColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5) {
         didSet {
             backgroundView.backgroundColor = backgroundViewColor
@@ -125,11 +125,12 @@ open class LNFloatingActionButton: UIView {
     public func open() {
 //        self.subviews.filter { !($0 is UIImageView) }.forEach { $0.removeFromSuperview() }
         if isBackgroundView {
-            backgroundView.frame = CGRect(x: -self.frame.origin.x, y: -self.frame.origin.y,
-                                          width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            backgroundView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             backgroundView.backgroundColor = backgroundViewColor
-            self.addSubview(backgroundView)
-            self.sendSubview(toBack: backgroundView)
+            backgroundView.isUserInteractionEnabled = true
+            self.superview?.insertSubview(backgroundView, aboveSubview: self)
+            self.superview?.bringSubview(toFront: self)
+            backgroundView.addTarget(self, action: #selector(close), for: UIControlEvents.touchUpInside)
         }
         if openedImage == nil {
             btnAnimationWithOpen(self)
