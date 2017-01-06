@@ -205,6 +205,10 @@ open class LNFloatingActionButton: UIView {
         self.addSubview(cell)
     }
     
+    private func isTouched(_ touches: Set<UITouch>) -> Bool {
+        return touches.count == 1 && touches.first?.tapCount == 1 && touches.first?.location(in: self) != nil
+    }
+    
     
     // MARK: - Action
     func didTap(cell: LNFloatingActionButtonCell) {
@@ -216,21 +220,13 @@ open class LNFloatingActionButton: UIView {
     
     // MARK: - Event
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            if touch.view === self {
-                self.touching = true
-            }
-        }
+        self.touching = true
         setNeedsDisplay()
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            if touch.view === backgroundView {
-                close()
-            } else if touch.view === self {
-                isClosed ? open() : close()
-            }
+        if isTouched(touches) {
+            isClosed ? open() : close()
         }
         self.touching = false
         setNeedsDisplay()
@@ -249,13 +245,6 @@ open class LNFloatingActionButton: UIView {
                 if cell.isUserInteractionEnabled {
                     return cell.hitTest(pointForTargetView, with: event)
                 }
-            }
-        }
-        
-        let pointForBackgroundView = backgroundView.convert(point, from: self)
-        if backgroundView.bounds.contains(pointForBackgroundView) {
-            if self.bounds.contains(point) == false {
-                return backgroundView
             }
         }
         
