@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A249B3F81DE949F900CC0B97"
-               BuildableName = "LNFloatingActionButton.framework"
-               BlueprintName = "LNFloatingActionButton"
-               ReferencedContainer = "container:LNFloatingActionButton.xcodeproj">
+               BlueprintIdentifier = "A249B40C1DE94AF100CC0B97"
+               BuildableName = "LNFloatingActionButton-Example.app"
+               BlueprintName = "LNFloatingActionButton-Example"
+               ReferencedContainer = "container:LNFloatingActionButton-Example/LNFloatingActionButton-Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,6 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A249B40C1DE94AF100CC0B97"
+            BuildableName = "LNFloatingActionButton-Example.app"
+            BlueprintName = "LNFloatingActionButton-Example"
+            ReferencedContainer = "container:LNFloatingActionButton-Example/LNFloatingActionButton-Example.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"

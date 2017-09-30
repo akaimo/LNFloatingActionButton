@@ -16,30 +16,25 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-//        let cell = LNFloatingActionButtonTitleCell()
-//        cell.title = "sample text"
-//        cell.titleLabelSize = CGSize(width: 200, height: 40)
-//        cell.titleColor = UIColor.red
-//        cell.titleLabelBackgroundColor = UIColor.blue
-//        cell.image = UIImage(named: "like")
-//        
-//        cells.append(LNFloatingActionButtonCell())
-//        cells.append(cell)
-        let ellipseCell = LNFloatingActionButtonEllipseCell()
-        ellipseCell.ellipseSize = CGSize(width: 150, height: 30)
-        ellipseCell.titleTextAlignment = .center
-        ellipseCell.title = "test text"
-        ellipseCell.image = UIImage(named: "like")
-//        ellipseCell.isVariableSize = true
+
+        let ellipseCell: LNFloatingActionButtonEllipseCell = {
+            let cell = LNFloatingActionButtonEllipseCell()
+            cell.ellipseSize = CGSize(width: 150, height: 30)
+            cell.titleTextAlignment = .center
+            cell.title = "test text"
+            cell.image = UIImage(named: "like")
+            return cell
+        }()
         cells.append(ellipseCell)
         
-        let ellipse2Cell = LNFloatingActionButtonEllipseCell()
-        ellipse2Cell.ellipseSize = CGSize(width: 150, height: 30)
-        ellipse2Cell.titleTextAlignment = .center
-        ellipse2Cell.title = "sample text"
-        ellipse2Cell.image = UIImage(named: "home")
+        let ellipse2Cell: LNFloatingActionButtonEllipseCell = {
+           let cell = LNFloatingActionButtonEllipseCell()
+            cell.ellipseSize = CGSize(width: 150, height: 30)
+            cell.titleTextAlignment = .center
+            cell.title = "sample text"
+            cell.image = UIImage(named: "home")
+            return cell
+        }()
         cells.append(ellipse2Cell)
         
         
@@ -57,7 +52,7 @@ class ViewController: UIViewController {
 //        floatingActionButton.openedImage = UIImage(named: "like")
 //        floatingActionButton.cellAnimationWithOpen = { btn in btn.customeAnimation() }
 //        floatingActionButton.titleLabelPosition = .left
-        floatingActionButton.cellHorizontalAlign = .left
+        floatingActionButton.cellHorizontalAlign = .right
 //        floatingActionButton.cellAnimationWithOpen = { btn in btn.popEllipseCellAnimationWithOpen() }
         floatingActionButton.isBackgroundView = true
         view.addSubview(floatingActionButton)
