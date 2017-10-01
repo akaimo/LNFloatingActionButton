@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             let cell = LNFloatingActionButtonEllipseCell()
             cell.ellipseSize = CGSize(width: 150, height: 30)
             cell.titleTextAlignment = .center
-            cell.title = "test text"
+            cell.title = "like button"
             cell.image = UIImage(named: "like")
             return cell
         }()
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
            let cell = LNFloatingActionButtonEllipseCell()
             cell.ellipseSize = CGSize(width: 150, height: 30)
             cell.titleTextAlignment = .center
-            cell.title = "sample text"
+            cell.title = "home button"
             cell.image = UIImage(named: "home")
             return cell
         }()
