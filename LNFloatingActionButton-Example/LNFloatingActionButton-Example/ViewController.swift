@@ -37,25 +37,21 @@ class ViewController: UIViewController {
         }()
         cells.append(ellipse2Cell)
         
-        
-        floatingActionButton = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
-//        floatingActionButton.size = 56
-        floatingActionButton.color = UIColor.white
-//        floatingActionButton.touchingColor = UIColor.green
-        floatingActionButton.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        floatingActionButton.shadowOpacity = 0.5
-        floatingActionButton.shadowRadius = 2.0
-        floatingActionButton.shadowPath = floatingActionButton.circlePath
-        floatingActionButton.delegate = self
-        floatingActionButton.dataSource = self
-        floatingActionButton.closedImage = UIImage(named: "plus")
-//        floatingActionButton.openedImage = UIImage(named: "like")
-//        floatingActionButton.cellAnimationWithOpen = { btn in btn.customeAnimation() }
-//        floatingActionButton.titleLabelPosition = .left
-        floatingActionButton.cellHorizontalAlign = .right
-//        floatingActionButton.cellAnimationWithOpen = { btn in btn.popEllipseCellAnimationWithOpen() }
-        floatingActionButton.isBackgroundView = true
-        view.addSubview(floatingActionButton)
+        let fab: LNFloatingActionButton = {
+            let button = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
+            button.delegate = self
+            button.dataSource = self
+            button.color = .white
+            button.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            button.shadowOpacity = 0.5
+            button.shadowRadius = 2.0
+            button.shadowPath = button.circlePath
+            button.closedImage = UIImage(named: "plus")
+            button.cellHorizontalAlign = .right
+            button.isBackgroundView = true
+            return button
+        }()
+        view.addSubview(fab)
     }
 
     override func didReceiveMemoryWarning() {
