@@ -55,3 +55,24 @@ func floatingActionButton(_ floatingActionButton: LNFloatingActionButton, didSel
     floatingActionButton.close()
 }
 ```
+
+### Setting Button
+##### Button Image
+```swift
+fab.closedImage = UIImage(named: "close")
+// default is nil
+// When it is nil, closeImage turn
+fab.openedImage = UIImage(named: "open")
+```
+
+##### Change the size
+```swift
+fab.size = 45
+```
+
+##### Change the colors
+```swift
+fab.color = .white
+// Change color while tapping
+fab.touchingColor = .lightGray
+```
