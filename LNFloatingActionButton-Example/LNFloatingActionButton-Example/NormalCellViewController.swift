@@ -12,7 +12,6 @@ import LNFloatingActionButton
 class NormalCellViewController: UIViewController {
     
     var cells: [LNFloatingActionButtonCell] = []
-    var floatingActionButton: LNFloatingActionButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,7 +12,6 @@ import LNFloatingActionButton
 class EllipseCellViewController: UIViewController {
     
     var cells: [LNFloatingActionButtonCell] = []
-    var floatingActionButton: LNFloatingActionButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
