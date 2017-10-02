@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A20F5EE71F811C8100BE8AB0 /* EllipseCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20F5EE61F811C8100BE8AB0 /* EllipseCellViewController.swift */; };
+		A20F5EE91F812A1D00BE8AB0 /* NormalCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20F5EE81F812A1D00BE8AB0 /* NormalCellViewController.swift */; };
 		A249B4111DE94AF100CC0B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A249B4101DE94AF100CC0B97 /* AppDelegate.swift */; };
 		A249B4131DE94AF100CC0B97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A249B4121DE94AF100CC0B97 /* ViewController.swift */; };
 		A249B4161DE94AF100CC0B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A249B4141DE94AF100CC0B97 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		A20F5EE61F811C8100BE8AB0 /* EllipseCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseCellViewController.swift; sourceTree = "<group>"; };
+		A20F5EE81F812A1D00BE8AB0 /* NormalCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCellViewController.swift; sourceTree = "<group>"; };
 		A249B40D1DE94AF100CC0B97 /* LNFloatingActionButton-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LNFloatingActionButton-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A249B4101DE94AF100CC0B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A249B4121DE94AF100CC0B97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				A249B4101DE94AF100CC0B97 /* AppDelegate.swift */,
 				A249B4121DE94AF100CC0B97 /* ViewController.swift */,
 				A20F5EE61F811C8100BE8AB0 /* EllipseCellViewController.swift */,
+				A20F5EE81F812A1D00BE8AB0 /* NormalCellViewController.swift */,
 				A249B4141DE94AF100CC0B97 /* Main.storyboard */,
 				A249B4171DE94AF100CC0B97 /* Assets.xcassets */,
 				A249B4191DE94AF100CC0B97 /* LaunchScreen.storyboard */,
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A249B4131DE94AF100CC0B97 /* ViewController.swift in Sources */,
+				A20F5EE91F812A1D00BE8AB0 /* NormalCellViewController.swift in Sources */,
 				A20F5EE71F811C8100BE8AB0 /* EllipseCellViewController.swift in Sources */,
 				A249B4111DE94AF100CC0B97 /* AppDelegate.swift in Sources */,
 			);

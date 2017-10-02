@@ -34,8 +34,15 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "ellipse cell"
+            
+        case 1:
             cell.textLabel?.text = "normal cell"
+            
+        default:
+            break
         }
         return cell
     }
@@ -47,6 +54,10 @@ extension ViewController: UITableViewDelegate {
         case 0:
             let vc = UIStoryboard(name: "Main", bundle: nil)
                 .instantiateViewController(withIdentifier: "EllipseCellViewController") as! EllipseCellViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        case 1:
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NormalCellViewController")
             self.navigationController?.pushViewController(vc, animated: true)
             
         default:
