@@ -60,6 +60,7 @@ class NormalCellViewController: UIViewController {
 extension NormalCellViewController: LNFloatingActionButtonDelegate {
     func floatingActionButton(_ floatingActionButton: LNFloatingActionButton, didSelectItemAtIndex index: Int) {
         print(index)
+        floatingActionButton.close()
     }
 }
 

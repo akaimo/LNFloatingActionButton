@@ -65,6 +65,7 @@ class EllipseCellViewController: UIViewController {
 extension EllipseCellViewController: LNFloatingActionButtonDelegate {
     func floatingActionButton(_ floatingActionButton: LNFloatingActionButton, didSelectItemAtIndex index: Int) {
         print(index)
+        floatingActionButton.close()
     }
 }
 
