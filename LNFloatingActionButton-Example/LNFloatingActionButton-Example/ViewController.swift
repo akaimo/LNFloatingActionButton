@@ -41,6 +41,9 @@ extension ViewController: UITableViewDataSource {
         case 1:
             cell.textLabel?.text = "normal cell"
             
+        case 2:
+            cell.textLabel?.text = "title cell"
+            
         default:
             break
         }
@@ -58,6 +61,10 @@ extension ViewController: UITableViewDelegate {
             
         case 1:
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NormalCellViewController")
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        case 2:
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TitleCellViewController")
             self.navigationController?.pushViewController(vc, animated: true)
             
         default:
