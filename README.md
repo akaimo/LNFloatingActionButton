@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/LNFloatingActionButton.svg?style=flat)](http://cocoapods.org/pods/LNFloatingActionButton)
 [![Platform](https://img.shields.io/cocoapods/p/LNFloatingActionButton.svg?style=flat)](http://cocoapods.org/pods/LNFloatingActionButton)
   
-LNFloatingActionButton is an easily customizable Floating Action Button
+LNFloatingActionButton is an easily customizable Floating Action Button.
 
 ## Preview
 <img src="https://github.com/akaimo/LNFloatingActionButton/blob/master/Images/normal_cell.gif" width='187' alt="Preview gif"><img src="https://github.com/akaimo/LNFloatingActionButton/blob/master/Images/title_cell.gif" width='187' alt="Preview gif"><img src="https://github.com/akaimo/LNFloatingActionButton/blob/master/Images/ellipse_cell.gif" width='187' alt="Preview gif">
@@ -23,4 +23,35 @@ github "akaimo/LNFloatingActionButton"
 #### [CocoaPods](https://github.com/cocoapods/cocoapods)
 ```
 pod 'LNFloatingActionButton', '~> 0.1'
+```
+
+## Usage
+It is designed like UITableView.
+```swift
+var cells: [LNFloatingActionButtonCell] = []
+
+let cell = LNFloatingActionButtonCell()
+cell.image = UIImage(named: "action_image")
+cells.append(cell)
+
+let fab = LNFloatingActionButton()
+fab.delegate = self
+fab.dataSource = self
+fab.closedImage = UIImage(named: "close_image")
+view.addSubview(fab)
+
+// LNFloatingActionButtonDataSource
+func numberOfCells(_ floatingActionButton: LNFloatingActionButton) -> Int {
+    return cells.count
+}
+    
+func cellForIndex(_ index: Int) -> LNFloatingActionButtonCell {
+    return cells[index]
+}
+
+// LNFloatingActionButtonDelegate
+func floatingActionButton(_ floatingActionButton: LNFloatingActionButton, didSelectItemAtIndex index: Int) {
+    // action ...
+    floatingActionButton.close()
+}
 ```
