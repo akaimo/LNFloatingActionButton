@@ -115,3 +115,25 @@ fab.cellMargin = 10.0
 // FAB to cell margin
 fab.btnToCellMargin = 15.0
 ```
+
+### Floating Action Button Cell
+##### Cell image
+```swift
+cell.image = UIImage(named: "")
+
+// Size of image relative to fab size
+cell.internalRatio = 0.75
+```
+
+##### Change the size
+```swift
+cell.size = 45
+```
+
+##### Change the colors
+```swift
+cell.color = .white
+// Change color while tapping
+cell.responsible = true
+cell.touchingColor = .lightGray
+```
