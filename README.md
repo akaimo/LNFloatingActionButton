@@ -56,12 +56,13 @@ func floatingActionButton(_ floatingActionButton: LNFloatingActionButton, didSel
 }
 ```
 
-### Button setting
+## Additional settings
+### Floating Action Button
 ##### Button Image
 ```swift
 fab.closedImage = UIImage(named: "close")
 // default is nil
-// When it is nil, closeImage turn
+// When it is nil, display closedImage
 fab.openedImage = UIImage(named: "open")
 
 // Size of image relative to fab size
@@ -107,7 +108,7 @@ fab.cellHorizontalAlign = .left
 fab.titleLabelPosition = .right
 ```
 
-#### Cell margin
+##### Cell margin
 ```swift
 // Cell to cell margin
 fab.cellMargin = 10.0
