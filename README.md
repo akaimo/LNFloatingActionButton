@@ -55,3 +55,85 @@ func floatingActionButton(_ floatingActionButton: LNFloatingActionButton, didSel
     floatingActionButton.close()
 }
 ```
+
+## Additional settings
+### Floating Action Button
+##### Button Image
+```swift
+fab.closedImage = UIImage(named: "close")
+// default is nil
+// When it is nil, display closedImage
+fab.openedImage = UIImage(named: "open")
+
+// Size of image relative to fab size
+fab.internalRatio = 0.75
+```
+
+##### Change the size
+```swift
+fab.size = 45
+```
+
+##### Change the colors
+```swift
+fab.color = .white
+// Change color while tapping
+tab.responsible = true
+fab.touchingColor = .lightGray
+```
+
+##### Overlay
+```swift
+fab.isBackgroundView = true
+fab.backgroundViewColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+```
+
+##### Button shadow
+```swift
+fab.shadowOffset = CGSize(width: 0.0, height: 2.0)
+fab.shadowOpacity = 0.5
+fab.shadowRadius = 2.0
+fab.shadowPath = fab.circlePath
+```
+
+##### Reference position of cell
+```swift
+// default is .center
+fab.cellHorizontalAlign = .left
+```
+
+##### Title position of cell
+```swift
+// default is .left
+fab.titleLabelPosition = .right
+```
+
+##### Cell margin
+```swift
+// Cell to cell margin
+fab.cellMargin = 10.0
+// FAB to cell margin
+fab.btnToCellMargin = 15.0
+```
+
+### Floating Action Button Cell
+##### Cell image
+```swift
+cell.image = UIImage(named: "")
+
+// Size of image relative to fab size
+cell.internalRatio = 0.75
+```
+
+##### Change the size
+```swift
+cell.size = 45
+```
+
+##### Change the colors
+```swift
+cell.color = .white
+// Change color while tapping
+cell.responsible = true
+cell.touchingColor = .lightGray
+```
