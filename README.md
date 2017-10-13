@@ -94,6 +94,7 @@ fab.shadowOffset = CGSize(width: 0.0, height: 2.0)
 fab.shadowOpacity = 0.5
 fab.shadowRadius = 2.0
 fab.shadowPath = fab.circlePath
+fab.shadowColor = .black
 ```
 
 ##### Reference position of cell

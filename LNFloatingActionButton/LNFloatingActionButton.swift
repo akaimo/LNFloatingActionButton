@@ -47,6 +47,13 @@ open class LNFloatingActionButton: UIView {
         get { return circleLayer.shadowPath }
         set { circleLayer.shadowPath = newValue }
     }
+    open var shadowColor: UIColor? {
+        get {
+            guard let color = circleLayer.shadowColor else { return nil }
+            return UIColor(cgColor: color)
+        }
+        set { circleLayer.shadowColor = newValue?.cgColor }
+    }
     open var circlePath: CGPath? {
         return circleLayer.path
     }
