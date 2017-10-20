@@ -23,6 +23,8 @@ open class LNFloatingActionButtonCell: UIView {
     
     open var size: CGFloat = 42 {
         didSet {
+            self.frame.size = CGSize(width: size, height: size)
+            self.layer.cornerRadius = self.frame.size.height/2
             self.center = CGPoint(x: size/2, y: size/2)
             resizeSubviews()
         }
