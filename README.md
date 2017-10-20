@@ -22,7 +22,7 @@ github "akaimo/LNFloatingActionButton"
 
 #### [CocoaPods](https://github.com/cocoapods/cocoapods)
 ```
-pod 'LNFloatingActionButton', '~> 0.1'
+pod 'LNFloatingActionButton', '~> 0.2'
 ```
 
 ## Usage
@@ -137,4 +137,13 @@ cell.color = .white
 // Change color while tapping
 cell.responsible = true
 cell.touchingColor = .lightGray
+```
+
+##### Cell shadow
+```swift
+cell.shadowOffset = CGSize(width: 0.0, height: 2.0)
+cell.shadowOpacity = 0.5
+cell.shadowRadius = 2.0
+cell.shadowPath = cell.circlePath
+cell.shadowColor = .black
 ```
