@@ -69,6 +69,10 @@ open class LNFloatingActionButtonEllipseCell: LNFloatingActionButtonCell {
         }
     }
     
+    override open var circlePath: CGPath? {
+        return UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: ellipseSize.width, height: ellipseSize.height), cornerRadius: cornerRadius).cgPath
+    }
+    
     
     // MARK: - init
     override public init() {
