@@ -23,6 +23,8 @@ open class LNFloatingActionButtonCell: UIView {
     
     open var size: CGFloat = 42 {
         didSet {
+            self.frame.size = CGSize(width: size, height: size)
+            self.layer.cornerRadius = self.frame.size.height/2
             self.center = CGPoint(x: size/2, y: size/2)
             resizeSubviews()
         }
@@ -34,6 +36,33 @@ open class LNFloatingActionButtonCell: UIView {
         }
     }
     open var touchingColor: UIColor?
+    
+    open var shadowOffset: CGSize {
+        get { return layer.shadowOffset }
+        set { layer.shadowOffset = newValue }
+    }
+    open var shadowOpacity: Float {
+        get { return layer.shadowOpacity }
+        set { layer.shadowOpacity = newValue }
+    }
+    open var shadowRadius: CGFloat {
+        get { return layer.shadowRadius }
+        set { layer.shadowRadius = newValue }
+    }
+    open var shadowPath: CGPath? {
+        get { return layer.shadowPath }
+        set { layer.shadowPath = newValue }
+    }
+    open var shadowColor: UIColor? {
+        get {
+            guard let color = layer.shadowColor else { return nil }
+            return UIColor(cgColor: color)
+        }
+        set { layer.shadowColor = newValue?.cgColor }
+    }
+    open var circlePath: CGPath? {
+        return UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size, height: size)).cgPath
+    }
     
     
     // MARK: - init
