@@ -17,18 +17,18 @@ class NormalCellViewController: UIViewController {
         super.viewDidLoad()
 
         let cell: LNFloatingActionButtonCell = {
-           let c = LNFloatingActionButtonCell()
-            c.size = 30
-            c.image = UIImage(named: "like")
-            return c
+           let cell = LNFloatingActionButtonCell()
+            cell.size = 30
+            cell.image = UIImage(named: "like")
+            return cell
         }()
         cells.append(cell)
         
         let cell2: LNFloatingActionButtonCell = {
-           let c = LNFloatingActionButtonCell()
-            c.size = 30
-            c.image = UIImage(named: "home")
-            return c
+           let cell = LNFloatingActionButtonCell()
+            cell.size = 30
+            cell.image = UIImage(named: "home")
+            return cell
         }()
         cells.append(cell2)
         
@@ -36,13 +36,14 @@ class NormalCellViewController: UIViewController {
             let button = LNFloatingActionButton(x: view.frame.size.width - 100, y: view.frame.size.height - 100)
             button.delegate = self
             button.dataSource = self
+            button.size = 40
             button.color = .white
             button.shadowOffset = CGSize(width: 0.0, height: 2.0)
             button.shadowOpacity = 0.5
             button.shadowRadius = 2.0
             button.shadowPath = button.circlePath
             button.closedImage = UIImage(named: "plus")
-            button.cellMargin = 20
+            button.btnToCellMargin = 5
             return button
         }()
         view.addSubview(fab)
