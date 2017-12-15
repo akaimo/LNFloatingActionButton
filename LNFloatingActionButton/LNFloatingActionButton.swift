@@ -91,8 +91,8 @@ open class LNFloatingActionButton: UIView {
     open var titleLabelPosition = TitleLabelPosition.left  // TODO: move extension
     open var cellHorizontalAlign = CellHorizontalAlign.center
     
-    open var delegate:   LNFloatingActionButtonDelegate?
-    open var dataSource: LNFloatingActionButtonDataSource?
+    open weak var delegate:   LNFloatingActionButtonDelegate?
+    open weak var dataSource: LNFloatingActionButtonDataSource?
     
     private var touching = false
     
