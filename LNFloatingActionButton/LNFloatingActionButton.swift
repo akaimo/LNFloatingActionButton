@@ -150,7 +150,7 @@ open class LNFloatingActionButton: UIView {
         isClosed = false
     }
     
-    public func close() {
+    @objc public func close() {
         backgroundView.removeFromSuperview()
         if openedImage == nil {
             btnAnimationWithClose(self)
@@ -272,7 +272,7 @@ extension LNFloatingActionButton {
             cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
             UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.3,
                            options: UIViewAnimationOptions(),
-                           animations: { _ in
+                           animations: { 
                             cell.layer.transform = CATransform3DIdentity
                             cell.alpha = 1
             }, completion: nil)
@@ -283,7 +283,7 @@ extension LNFloatingActionButton {
     public func popCellAnimationWithClose() {
         var delay = 0.0
         cells().forEach { cell in
-            UIView.animate(withDuration: 0.15, delay: delay, options: UIViewAnimationOptions(), animations: { _ in
+            UIView.animate(withDuration: 0.15, delay: delay, options: UIViewAnimationOptions(), animations: { 
                 cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
                 cell.alpha = 0
             }, completion: { _ in
@@ -296,13 +296,13 @@ extension LNFloatingActionButton {
     // MARK: - button
     public func rotate45BtnAnimationWithOpen() {
         UIView.animate(withDuration: 0.3) { () -> Void in
-            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
+            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi) * 45.0 / 180.0)
         }
     }
     
     public func rotate45BtnAnimationWithClose() {
         UIView.animate(withDuration: 0.3) { () -> Void in
-            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 0 / 180.0)
+            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi) * 0 / 180.0)
         }
     }
 }
