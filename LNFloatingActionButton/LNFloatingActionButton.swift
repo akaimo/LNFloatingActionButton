@@ -296,13 +296,13 @@ extension LNFloatingActionButton {
     // MARK: - button
     public func rotate45BtnAnimationWithOpen() {
         UIView.animate(withDuration: 0.3) { () -> Void in
-            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 45.0 / 180.0)
+            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi) * 45.0 / 180.0)
         }
     }
     
     public func rotate45BtnAnimationWithClose() {
         UIView.animate(withDuration: 0.3) { () -> Void in
-            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) * 0 / 180.0)
+            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi) * 0 / 180.0)
         }
     }
 }
