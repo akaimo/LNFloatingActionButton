@@ -21,7 +21,7 @@ import QuartzCore
 
 
 open class LNFloatingActionButton: UIView {
-    open let imageView = UIImageView()  // TODO: private
+    public let imageView = UIImageView()  // TODO: private
     open var closedImage: UIImage? = nil {
         didSet {
             imageView.image = closedImage
