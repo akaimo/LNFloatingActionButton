@@ -136,8 +136,8 @@ open class LNFloatingActionButton: UIView {
             backgroundView.backgroundColor = backgroundViewColor
             backgroundView.isUserInteractionEnabled = true
             self.superview?.insertSubview(backgroundView, aboveSubview: self)
-            self.superview?.bringSubview(toFront: self)
-            backgroundView.addTarget(self, action: #selector(close), for: UIControlEvents.touchUpInside)
+            self.superview?.bringSubviewToFront(self)
+            backgroundView.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
         }
         if openedImage == nil {
             btnAnimationWithOpen(self)
@@ -271,7 +271,7 @@ extension LNFloatingActionButton {
             cell.frame.origin.y = -cellHeight
             cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
             UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.3,
-                           options: UIViewAnimationOptions(),
+                           options: UIView.AnimationOptions(),
                            animations: { 
                             cell.layer.transform = CATransform3DIdentity
                             cell.alpha = 1
@@ -283,7 +283,7 @@ extension LNFloatingActionButton {
     public func popCellAnimationWithClose() {
         var delay = 0.0
         cells().forEach { cell in
-            UIView.animate(withDuration: 0.15, delay: delay, options: UIViewAnimationOptions(), animations: { 
+            UIView.animate(withDuration: 0.15, delay: delay, options: UIView.AnimationOptions(), animations: { 
                 cell.layer.transform = CATransform3DMakeScale(0.4, 0.4, 1)
                 cell.alpha = 0
             }, completion: { _ in
