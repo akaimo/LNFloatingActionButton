@@ -11,7 +11,7 @@ LNFloatingActionButton is an easily customizable Floating Action Button.
 <img src="https://github.com/akaimo/LNFloatingActionButton/blob/master/Images/normal_cell.gif" width='187' alt="Preview gif"><img src="https://github.com/akaimo/LNFloatingActionButton/blob/master/Images/title_cell.gif" width='187' alt="Preview gif"><img src="https://github.com/akaimo/LNFloatingActionButton/blob/master/Images/ellipse_cell.gif" width='187' alt="Preview gif">
 
 ## Requirements
-- Swift 4.0 or later
+- Swift 3.0 or later
 - iOS 8.0 or later
 
 ## Installation
