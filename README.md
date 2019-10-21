@@ -22,7 +22,7 @@ github "akaimo/LNFloatingActionButton"
 
 #### [CocoaPods](https://github.com/cocoapods/cocoapods)
 ```
-pod 'LNFloatingActionButton', '~> 0.5'
+pod 'LNFloatingActionButton', '~> 0.5.1'
 ```
 
 ## Usage
